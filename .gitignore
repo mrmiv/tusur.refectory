@@ -1,2 +1,8 @@
 # Папка project
 project/*
+
+manage.py
+db.sqlite3
+
+web/__pycache__/*
+web/migrations/*
