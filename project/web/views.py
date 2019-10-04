@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def index(request):
-    return(HttpResponse("HelloWorld"))
+    return(render(request, 'web/templates/main.html'))
 
 # Create your views here.
