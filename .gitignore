@@ -1,5 +1,6 @@
 
-project/*
+/project/project/*
+!settings.py
 
 manage.py
 db.sqlite3
