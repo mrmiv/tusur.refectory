@@ -1,5 +1,6 @@
 
 /project/project/*
+/project/web/__pycache__/*
 !settings.py
 
 manage.py
