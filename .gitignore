@@ -1,9 +1,7 @@
 
 /project/project/*
+/project/web/__pycache__/*
+*.pyc
 !settings.py
 
 manage.py
-db.sqlite3
-
-web/__pycache__/*
-web/migrations/*
