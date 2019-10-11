@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django import forms
 from .models import food
+import json
 
 def index(request):
-    return(render(request, 'main.html'))
+    eat = food.objects.all()
+    return(render(request, 'main.html',{"food": eat}))
 
 def index_menu(request):
     return(render(request, 'menu.html'))
@@ -13,12 +15,6 @@ def index_shop(request):
     return(render(request, 'shop.html'))
 
 # Create your views here.
-
-class Food_form(forms.Form):
-    name = forms.CharField()
-    count = forms.IntegerField()
-    price = forms.FloatField()
-
 
 # def index_menu_test(request):
 #     foodform = Food_form()
@@ -33,15 +29,23 @@ class Food_form(forms.Form):
 
 def test_get(request):
     eat = food.objects.all()
-    return render(request, "menu.html", {"food": eat})
+    return render(request, "shop.html", {"food": eat})
  
-# # сохранение данных в бд
-# def test_create(request):
-#     if request.method == "POST":
-#         tea = food()
-#         tea.name = request.POST.get("name")
-#         tea.count = request.POST.get("count")
-#         tea.price = request.POST.get("price")
-#         tea.save()
-#         tea = food.objects.create(name=tea.name, count=tea.count, price=tea.price)
-#     return HttpResponseRedirect("menu")
+# сохранение данных в бд
+def test_create(request):
+    if request.method == "POST":
+        tea = food()
+        tea.name=request.POST.get("name")
+        tea.save()
+    return HttpResponseRedirect("/")
+
+# def product(request, product_id):
+#     product = food.objects.get(id=product_id)
+
+#     session_key = request.session.session_key
+#     if not session_key:
+#         request.session.cycle_key()
+#     print(request.session.session_key)
+#     return render(request, "menu.html", locals())
+
+

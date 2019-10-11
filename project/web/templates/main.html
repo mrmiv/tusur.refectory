@@ -14,5 +14,19 @@
 </head>
 <body>
 
+
+{% for e in food %}  
+<form method="POST" action="shop">
+    {% csrf_token %}
+    <input class="id" id="id" value="{{ e.id }}" readonly></input>
+    <input class="name" name="name" value="{{ e.name }}" readonly></input>
+    <button class="btn btn-success"  type="submit"
+    id="btn_{{e.id}}"
+    data-id="{{e.id}}"
+    data-name="{{e.name}}"
+    >Send</button>
+</form>
+{% endfor %}
+
 </body>
 </html>
