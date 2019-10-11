@@ -20,16 +20,16 @@ class Food_form(forms.Form):
     price = forms.FloatField()
 
 
-def index_menu_test(request):
-    foodform = Food_form()
-    # return render(request, "menu.html", {"form": foodform})
-    if request.method == "POST":
-        name = request.POST.get("name")
-        count = request.POST.get("count")     # получение значения поля age
-        return HttpResponse("<h2>Hello, {0}</h2>".format(name))
-    else:
-        foodform = Food_form()
-        return render(request, "menu.html", {"form": foodform})
+# def index_menu_test(request):
+#     foodform = Food_form()
+#     # return render(request, "menu.html", {"form": foodform})
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         count = request.POST.get("count")     # получение значения поля age
+#         return HttpResponse("<h2>Hello, {0}</h2>".format(name))
+#     else:
+#         foodform = Food_form()
+#         return render(request, "menu.html", {"form": foodform})
 
 def test_get(request):
     eat = food.objects.all()
