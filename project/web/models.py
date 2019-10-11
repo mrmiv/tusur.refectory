@@ -20,9 +20,9 @@ from django.db import models
 class food(models.Model):
     name = models.CharField(max_length=25)
     count = models.IntegerField(default=0)
-    price = models.DecimalField(decimal_places=3, max_digits=5, default=3)
+    price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
 
-    # Настройка функционала получения модели из меню в корзину v0.1
+    # Настройка функционала получения модели из меню в корзину v0.2
 
 
 

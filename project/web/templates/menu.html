@@ -22,6 +22,28 @@
         </div>
     </form>
     
+
+
+<!-- <form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Send" >
+</form> -->
+{% if food.count > 0 %}
+<h2>Список</h2>
+<table>
+    <tr><th>Id</th><th>name</th><th>count</th><th>price</th></tr>
+    {% for e in food %}
+    <tr><td>{{ e.id }}</td><td>{{ e.name }}</td><td>{{ e.count }}</td><td>{{ e.price }}</td></tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+
+
+
 <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
