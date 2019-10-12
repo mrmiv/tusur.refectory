@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django import forms
-from .models import food
+from .models import food, shop
 import json
 
 def index(request):
@@ -34,10 +34,18 @@ def test_get(request):
 # сохранение данных в бд
 def test_create(request):
     if request.method == "POST":
-        tea = food()
+        tea = shop()
         tea.name=request.POST.get("name")
+        tea.price=request.POST.get("price")
+        tea.count=request.POST.get("count")
         tea.save()
-    return HttpResponseRedirect("/")
+        # return HttpResponseRedirect("shop")
+        eat = food.objects.all()
+        return render(request, "main.html", {"food": eat})
+    else:
+        buy = shop.objects.all()
+        return render(request, "shop.html", {"shop": buy})
+
 
 # def product(request, product_id):
 #     product = food.objects.get(id=product_id)

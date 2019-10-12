@@ -19,7 +19,11 @@ from django.db import models
 
 class food(models.Model):
     name = models.CharField(max_length=25)
-    count = models.IntegerField(default=0)
     price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
+
+class shop(models.Model):
+    name = models.CharField(max_length=25)
+    price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
+    count = models.IntegerField(default=1)
 
 
