@@ -16,14 +16,47 @@ from django.db import models
 #     price = models.DecimalField(decimal_places=3, max_digits=5)
 #     # изображение блюда
 #     # image = models.ImageField()
+ 
+# class food(models.Model):
+#     name = models.CharField(max_length=25)
+#     price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
 
-class food(models.Model):
-    name = models.CharField(max_length=25)
-    price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
+# class shop(models.Model):
+#     name = models.CharField(max_length=25)
+#     price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
+#     count = models.IntegerField(default=1)
 
-class shop(models.Model):
-    name = models.CharField(max_length=25)
+# product это блюдо
+class product(models.Model):
+    name = models.CharField(max_length=40)
     price = models.DecimalField(decimal_places=2, max_digits=5, default=3)
-    count = models.IntegerField(default=1)
+    category = models.CharField(max_length=25)
+    #количество
+    count = models.DecimalField(decimal_places=2, max_digits=5, default=3)
+      #состав
+    structure = models.CharField(max_length=150)
+
+# Пользователь
+class user(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+# Заказы
+class orders(models.Model):
+    dateorder = models.DateField()
+    timeorder = models.TimeField()
+    Pay = models.BooleanField()
+    totalprice = models.IntegerField()
+    # статус выдачи
+    deliverystatus = models.BooleanField()
+    # Корпус выдачи: здесь сомнения у меня
+    # building = CharField(max_length=5)
+
+# Корзина ???? 
+
+# Сотрудники
+# username = EmailField()
+# password = TextField()
+
 
 

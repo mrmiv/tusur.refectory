@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django import forms
-from .models import food, shop
+# from .models import food, shop
 import json
 
 def index(request):
-    eat = food.objects.all()
-    return(render(request, 'main.html',{"food": eat}))
+    # eat = food.objects.all()
+    return(render(request, 'main.html'))
 
 def index_menu(request):
     return(render(request, 'menu.html'))
@@ -27,24 +27,24 @@ def index_shop(request):
 #         foodform = Food_form()
 #         return render(request, "menu.html", {"form": foodform})
 
-def test_get(request):
-    eat = food.objects.all()
-    return render(request, "shop.html", {"food": eat})
+# def test_get(request):
+#     eat = food.objects.all()
+#     return render(request, "shop.html", {"food": eat})
  
-# сохранение данных в бд
-def test_create(request):
-    if request.method == "POST":
-        tea = shop()
-        tea.name=request.POST.get("name")
-        tea.price=request.POST.get("price")
-        tea.count=request.POST.get("count")
-        tea.save()
-        # return HttpResponseRedirect("shop")
-        eat = food.objects.all()
-        return render(request, "main.html", {"food": eat})
-    else:
-        buy = shop.objects.all()
-        return render(request, "shop.html", {"shop": buy})
+# # сохранение данных в бд
+# def test_create(request):
+#     if request.method == "POST":
+#         tea = shop()
+#         tea.name=request.POST.get("name")
+#         tea.price=request.POST.get("price")
+#         tea.count=request.POST.get("count")
+#         tea.save()
+#         # return HttpResponseRedirect("shop")
+#         eat = food.objects.all()
+#         return render(request, "main.html", {"food": eat})
+#     else:
+#         buy = shop.objects.all()
+#         return render(request, "shop.html", {"shop": buy})
 
 
 # def product(request, product_id):
