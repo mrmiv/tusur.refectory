@@ -14,22 +14,24 @@
 </head>
 <body>
 
-<h1><a href="{% url 'shop' %}">Корзина</a></h1>
-{% for e in food %}  
-<form method="POST" action="shop">
-    {% csrf_token %}
-    <input class="id" id="id" value="{{ e.id }}" readonly></input>
-    <input class="name" name="name" value="{{ e.name }}" readonly></input>
-    <input class="price" name="price" value="{{ e.price }}" readonly></input>
-    <input class="count" name="count" placeholder="count" value="1" style="
-    display:none"></input>
-    <button class="btn btn-success"  type="submit"
-    id="btn_{{e.id}}"
-    data-id="{{e.id}}"
-    data-name="{{e.name}}"
-    >Send</button>
-</form>
-{% endfor %}
 
+<div class="container">
+    <h1 class="text-center"><a href="{% url 'shop' %}">Корзина</a></h1>
+    <form method="POST" action="create">
+        
+        {% csrf_token %}
+        <label for="name">Enter name</label>
+        <input type="text" class="name" name="name">
+
+        <label for="email">Enter email</label>
+        <input type="email" class="email" name="email">
+
+        <button class="btn btn-success"  type="submit">Create</button>
+    </form>
+    {% for user in users %}
+    <h2>user: {{user.name}}</h2>
+    <h2>email: {{user.email}}</h2>
+    {% endfor %}
+</div>
 </body>
 </html>

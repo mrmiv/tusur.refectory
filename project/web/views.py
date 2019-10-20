@@ -1,18 +1,29 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 from django import forms
-# from .models import food, shop
+from .models import user
 import json
 
 def index(request):
-    # eat = food.objects.all()
-    return(render(request, 'main.html'))
+    users = user.objects.all()
+    return(render(request, 'main.html', {"users":users}))
 
 def index_menu(request):
     return(render(request, 'menu.html'))
 
 def index_shop(request):
     return(render(request, 'shop.html'))
+
+def create(request):
+    if request.method == "POST":
+        someuser=user()
+        someuser.name = request.POST.get("name")
+        someuser.email = request.POST.get("email")
+        someuser.save()
+        return HttpResponseRedirect("/")
+    else:
+        return HttpResponseNotFound("404 404 404")
+
 
 # Create your views here.
 
