@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404
 from django import forms
 from .models import user
 import json
@@ -23,6 +23,21 @@ def create(request):
         return HttpResponseRedirect("/")
     else:
         return HttpResponseNotFound("404 404 404")
+
+def ajax_post(request):
+    if request.is_ajax() and request.POST:
+        data={'name': request.POST.get('name'), 'email':  request.POST.get('email')}
+        json_dist = json.dumps(data)
+        dist = json.loads(json_dist)
+        
+        someuser=user()
+        someuser.name = dist['name']
+        someuser.email = dist['email']
+        someuser.save()
+        
+        return HttpResponse(json.dumps(data), content_type='application/json')
+    else:
+        raise Http404
 
 
 # Create your views here.
