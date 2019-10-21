@@ -1,0 +1,39 @@
+ul.navbar-nav>li.nav-item{
+    padding: 4px;
+}
+
+a.nav-link{
+    color: white;
+    transition: 0.4s;
+    margin-right: 20px;
+    font-size: 14px;
+    padding: 6px;
+}
+
+a.nav-link:hover{
+    color: #005baa;
+    background-color: #fff;
+    /* border-radius: 20px; */
+}
+
+.navbar{
+    background: #005baa;
+}
+
+a.item-auth{
+    color: #005baa; 
+    background-color: #fff;
+    /* border-radius: 0; */
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+.img-logo{
+    height: 25px;
+}
+
+a.nav-link.active{
+    border-bottom: 1px solid white;
+}
