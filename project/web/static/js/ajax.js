@@ -9,6 +9,10 @@
 //         success: function(response){ $('#response_msg').text(response.msg); }
 //       });
 // }); 
+
+
+
+
     $('#ajax_form').on('submit',function(e){
         // console.log('helo')
         e.preventDefault();
@@ -22,13 +26,12 @@
                 },
             success: function(data){
                 console.log('it worked');
-                console.log(data)
+                $('ul.allusers').append('<li> user: '+data['name']+'<br> email: '+ data['email']+'</li>')
             },
             error: function(){
                 console.log('error')
             }
         });
-    
     });
 
     function getCookie(name) {
@@ -59,7 +62,3 @@
             }
         }
     });
-
-
-
-

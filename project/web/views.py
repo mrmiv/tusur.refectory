@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound, Http404, JsonResponse
 from django import forms
+from .forms import user_form
 from .models import user
 import json
 
@@ -27,6 +28,7 @@ def create(request):
 def ajax_post(request):
     if request.is_ajax() and request.POST:
         data={'name': request.POST.get('name'), 'email':  request.POST.get('email')}
+
         json_dist = json.dumps(data)
         dist = json.loads(json_dist)
         
@@ -38,6 +40,31 @@ def ajax_post(request):
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         raise Http404
+
+def ajax_get(request):
+    if request.is_ajax():
+        users = user.objects.all()
+        data = json.dumps(users)
+        print(data)
+        return JsonResponse(data, content_type='application/json')
+    else:
+        raise Http404
+
+def author_index(request):
+    if request.method == "POST":
+        userform = user()
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        # print(users)
+        if user.objects.filter(name=name, email=email):
+            return HttpResponse("<h2>Hello, {0}, ur email is {1}</h2>".format(name, email))
+        else:
+            return HttpResponse("Такого пользователя нет")
+        # return HttpResponse("Invalid data")
+    else:
+        userform = user()
+        return render(request, "shop.html", {"form": userform})
+
 
 
 # Create your views here.

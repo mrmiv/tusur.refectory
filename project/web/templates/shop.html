@@ -14,14 +14,20 @@
 </head>
 <body>
     <h1>Корзина</h1>
-    <ul class="list-inline">
-        {% for e in shop %}
-        <li class="list-inline-item">{{e.name}}</li>
-        <li class="list-inline-item">{{e.price}}</li>
-        <li class="list-inline-item">{{e.count}}</li>
-        <br>
-        {% endfor %}
-    </ul>
+
+
+    <div class="container">
+        <form action="shop" method="post">
+            {% csrf_token %}
+            <label for="id_name">Name:</label>
+            <input type="text" name="name" required id="id_name" />
+<br>
+            <label for="id_email">Email:</label>
+            <input type="email" name="email" required id="id_email" />
+<br>
+            <button type="submit">auth</button>
+        </form>
+    </div>
 
 </body>
 </html>
