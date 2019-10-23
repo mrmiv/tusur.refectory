@@ -1,0 +1,16 @@
+https://djbook.ru/rel1.8/topics/auth/default.html
+
+
+!!!! Найти абзац: Отдельно обсудим вопрос использования форм.
+https://tproger.ru/translations/extending-django-user-model/
+Тож очень хорош, тк модель уже создана:
+https://djbook.ru/rel1.6/topics/forms/modelforms.html
+
+
+
+Это такое се:
+https://developer.mozilla.org/ru/docs/Learn/Server-side/Django/Аутентификация
+
+http://django.fun/tutorials/autentifikaciya-v-django-polnyj-primer-vhoda-vyhoda-i-smeny-parolya/
+
+https://ustimov.org/posts/17/
