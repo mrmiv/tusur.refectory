@@ -37,3 +37,9 @@ a.item-auth{
 a.nav-link.active{
     border-bottom: 1px solid white;
 }
+
+.img-gl{
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+}
