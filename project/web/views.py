@@ -5,8 +5,7 @@ from django import forms
 import json
 
 def index(request):
-    eat = food.objects.all()
-    return(render(request, 'main.html',{"food": eat}))
+    return(render(request, 'main.html',))
 
 def index_menu(request):
     return(render(request, 'menu.html'))

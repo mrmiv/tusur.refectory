@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 
@@ -43,7 +44,13 @@ class product(models.Model):
 class user(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    
+    password = models.CharField(max_length=35)
+
+class Userform(ModelForm):
+    class Meta:
+        model = user
+        fields = ['name', 'email', 'password']
+
 # Заказы
 class orders(models.Model):
     dateorder = models.DateField()

@@ -12,41 +12,6 @@
 </head>
 <body>
     <h1>Страница меню</h1>
-  
-{% if food.count > 0 %}
-<h2>Список</h2>
-<ul class="list-inline">
-    {% for e in food %}  
-    <li class="list-inline-item">
-        <!-- Описание объекта еды -->
-    <div class="food">
-        <div class="id list-inline-item">{{ e.id }}</div>
-        <div class="name list-inline-item">{{ e.name }}</div>
-        <div class="count list-inline-item">{{ e.count }}</div>
-        <div class="price list-inline-item">{{ e.price }}</div>
-    </div>
-    <!-- Форма добавления еды в корзину -->
-    <form class="form-buy" id="{{e.id}}">
-        <!-- Ввод количества еды -->
-        <!-- <input type="number" > -->
-        <!-- Кнопка добавления в корзину -->
-        <button class="btn btn-success"  type="submit"
-        id="btn_{{e.id}}"
-        data-id="{{e.id}}"
-        data-name="{{e.name}}"
-        >Send</button>
-    </form>
-    <hr>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
-<h2>Корзина</h2>
-<ul class="list-group shop-list"></ul>
-
-
-
-
 
 <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
