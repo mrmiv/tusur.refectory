@@ -6,8 +6,12 @@ from django.contrib.auth import authenticate, user
 import json
 
 def index(request):
+<<<<<<< HEAD
     userform = Userform()
     return(render(request, 'main.html', {"form": Userform}))
+=======
+    return(render(request, 'main.html',))
+>>>>>>> e5d514e5a98abf5fd7cdd1ca9aadcb0e68aee7a1
 
 def index_menu(request):
     return(render(request, 'menu.html'))

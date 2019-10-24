@@ -41,6 +41,7 @@ class product(models.Model):
     structure = models.CharField(max_length=150) 
 
 # Пользователь
+<<<<<<< HEAD
 # class user(models.Model):
 #     name = models.CharField(max_length=50)
 #     email = models.EmailField(unique=True)
@@ -50,6 +51,17 @@ class product(models.Model):
 #     class Meta:
 #         model = user
 #         fields = ['name', 'email', 'password']
+=======
+class user(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=35)
+
+class Userform(ModelForm):
+    class Meta:
+        model = user
+        fields = ['name', 'email', 'password']
+>>>>>>> e5d514e5a98abf5fd7cdd1ca9aadcb0e68aee7a1
 
 # Заказы
 class orders(models.Model):
