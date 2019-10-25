@@ -1,3 +1,8 @@
+ @import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');   /* 'Poiret One', cursive */
+ @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap'); /*'Comfortaa', cursive*/
+@import url('https://fonts.googleapis.com/css?family=Istok+Web&display=swap');  /* 'Istok Web', sans-serif */
+@import url('https://fonts.googleapis.com/css?family=Neucha&display=swap'); /*'Neucha', cursive */
+
 ul.navbar-nav>li.nav-item{
     padding: 4px;
  
@@ -40,51 +45,86 @@ a.nav-link.active{
     border-bottom: 1px solid white;
 }
 
-.img-gl1{
-    height: 500px;
+img.food-1{
+    /* height: 500px;
+    Чтобы тарелка плавала по странице незавимо - задается absolute
     position: relative;
-    z-index: 1;
+    z-index: -1;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; */
+    position: absolute;
+    z-index: -1;
+    width: 80%;
+    left: 10%;
+    top: 200px;
 }
 
-.img-gl{
-    height: 500px;
+img.food-2{
+    /* height: 500px;
     display: block;
     margin: 0 auto;
     margin-top:-200px;
+    z-index: -9999; */
+    position: absolute;
+    z-index: -1;
+    top: 800px;
+    left: calc(50% - (100% / 4));
+    width: calc(100% / 2);
 }
 
-.text{
+.welcome{
+    padding-bottom: 200px;
+}
+
+.welcome-text{
     text-align: center;
     margin-top: 90px;
+    font-family: 'Neucha', cursive;
+    font-size: 42px;
 }
 
-.text-1{
+.block-about{
+    top: 100%;
+    position: absolute;
+    padding: 50px 0;
+    background: white;
+    box-shadow: 0 0 5px -2px black;
+}
+
+h1.text-about{
     text-align: center;
-    color:rgba(0, 0, 0, 1);
-  
-    
+    color:black;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 30px;
 }
 
-.block{
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    top:-130px;
-    height: 300px;
-    width: 100%; 
-    margin: 7px;
-    padding: 20px;
-    background: rgba(42,43,43,0.5);
-    position: relative;
-    z-index: 2;
-   
-    
-}
-
-/* @media screen and (max-width:767px){
+@media screen and (max-width:992px){
     ul.navbar-nav>li.nav-item{ 
         margin-left: auto;
     }
-}*/
+    span.navbar-toggler-icon{
+        display: contents;
+    }
+}
+
+@media screen and (max-width:662px){
+    h1.text-about{
+        font-size: 20px;
+    }
+    .block-about{
+        padding: 25px 0;
+    }
+    img.food-1{
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media screen and (max-width:494px){
+    h1.text-about{
+        font-size: 16px;
+    }
+    header>h1.welcome-text{
+        font-size: 20px;
+    }
+}
