@@ -19,17 +19,17 @@
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
             </button>
-            <div id="my-nav" class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'index'%}">Главная<span class="fa fa-home fa-lg"></span> </a>
+            <div id="my-nav" class="collapse navbar-collapse ul.navbar-nav>li.nav-item">
+                    <ul class="navbar-nav ml-auto" >
+                            <li class="nav-item" >
+                                <a class="nav-link" class="d-flex justify-content-end" href="{% url 'index'%}">Главная <span class="fa fa-home fa-lg"></> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{% url 'menu'%}">Меню<span class="fa fa-search fa-lg"></span></a>
+                                <a class="nav-link active" href="{% url 'menu'%}">Меню <span class="fa fa-search fa-lg"></span></a>
                             </li>
                             <li class="nav-item">
                             
-                                <a class="nav-link " href="{% url 'shop'%}" >Корзина<span class="fa fa-shopping-cart fa-lg"></span> </a>
+                                <a class="nav-link " href="{% url 'shop'%}" >Корзина <span class="fa fa-shopping-cart fa-lg"></span> </a>
                                 
                         
                             </li>
