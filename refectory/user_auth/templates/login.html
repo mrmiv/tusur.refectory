@@ -1,0 +1,73 @@
+{% load staticfiles %}
+
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Авторизация</title>
+    <link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
+<!-- form-style -->
+    <style>
+    input.form-control{
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    
+    label{
+        padding-left: 2px;
+        font-size: 14px;
+    }
+
+    .form-error{
+        font-size: 12px;
+    }
+    
+    @media screen and (max-width:992px){
+        input.form-control{
+        width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+<div class="form-container">
+        <div class="container">
+              
+            <h1 class="h1 text-center" style="margin-top: 20px;"> 
+              <a href="/" style="text-decoration: none;">  
+                  <i class="fa fas fa-arrow-circle-left"></i> 
+              </a> 
+              Авторизация
+          </h1>
+            <hr>
+            <h5 class="text-center">Не зарегистрированы? - <strong><a href="/login/registration">Загрегистрироваться</a></strong></h5>
+              <form method="post">
+                      {%csrf_token%}
+                      <div class="form-row justify-content-center">
+                        <div class="form-group col-12 col-lg-6">
+    
+                          <label for="username">E-mail</label>
+                          {% render_field form.username class="form-control " placeholder="E-mail" required=True %}
+                
+                          <label for="password1">Пароль</label>
+                          {% render_field form.password class="form-control " placeholder="Password" required=True %}
+                
+                          <p class="form-error text-center">{% render_field error %}</p>
+                          <button class="btn btn-primary" type="submit">Войти</button>
+                        </div>
+                      </div>
+                      <input type="hidden" name="next" value="{{next}}">
+                  </form>
+        </div>
+      </div>
+      {%include "includes/links/scripts.html"%}
+</body>
+</html>

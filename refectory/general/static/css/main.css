@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');   /* 'Poiret One', cursive */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap'); /*'Comfortaa', cursive*/
+@import url('https://fonts.googleapis.com/css?family=Istok+Web&display=swap');  /* 'Istok Web', sans-serif */
+@import url('https://fonts.googleapis.com/css?family=Neucha&display=swap'); /*'Neucha', cursive */
+
+.block-img{
+    width: 500px;
+    z-index: -2 !important;
+}
+
+img.food{
+    /* z-index: -2 !important; */
+    max-width: 100%;
+    height: auto;
+}
+
+.welcome-text{
+    text-align: center;
+    margin-top: 90px;
+    font-family: 'Neucha', cursive;
+    font-size: 42px;
+}
+
+.block-about{
+    top: 90%;
+    width: 100%;
+    margin-top: -80px;
+    padding: 35px 0;
+    background: rgb(255, 255, 255, 0.5);
+    box-shadow: 0 0 5px -2px black;
+}
+
+h1.text-about{
+    text-align: center;
+    color:black;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 30px;
+}
+
+/* text-info */
+.block-info{
+    background: #005bac;
+}
+
+.block-text-info{
+    width: 80%;
+    text-align: center;
+    background: #fff;
+}
+
+@media screen and (max-width:662px){
+    h1.text-about{
+        font-size: 22px;
+    }
+    .block-about{
+        padding: 25px 0;
+    }
+}
+
+@media screen and (max-width:494px){
+    h1.text-about{
+        font-size: 16px;
+    }
+    header>h1.welcome-text{
+        font-size: 20px;
+    }
+    .block-img{
+        width: 350px;
+    }
+}
+
+@media screen and (max-width:360px){
+    .block-about{
+        top: 80%;
+    }
+}

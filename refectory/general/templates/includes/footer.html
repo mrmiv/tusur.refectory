@@ -1,0 +1,89 @@
+{% load staticfiles %} {% block footer %}
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-7 blockstyle about">
+        <p class="text-footer">
+          Проект создан студентами ТУСУР ФИТ, <br />
+          ГПО 1905 "Инновационная столовая"
+        </p>
+        <p class="text-footer">
+          г. Томск, пр. Ленина 40 <br />
+          GPO1905.FIT.TUSUR@yandex.ru
+        </p>
+        <div class="social">
+          <a href="#"><i class="fa fa-vk fa-2x social-item" aria-hidden="true"> </i></a>
+          <a href="#"><i class="fa fa-instagram fa-2x social-item" aria-hidden="true"> </i></a>
+          <a href="#"><i class="fa fa-facebook fa-2x social-item" aria-hidden="true"> </i></a>
+        </div>
+      </div>
+      <div class="col-5 blockstyle feedback">
+        <h3>Обратная связь</h3>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          data-whatever="@mdo"
+        >
+          Оставить свой отзыв
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Пожалуйста оставьте отзыв:
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label" style="float: left;"
+                      >Сообщение:</label
+                    >
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                <button type="button" class="btn btn-primary">
+                  Отправить
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+          <div class="tomato mx-auto">
+            <img
+            src="{% static 'img/tomato.png' %}"
+            class=" d-block"
+            style="
+            max-width: 100%;
+            height: auto;"
+          />
+          </div>
+        <h5 class="scroll_up text-center">Вверх</h5>
+    </div>
+  </div>
+</footer>
+{% endblock %}

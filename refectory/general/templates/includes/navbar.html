@@ -1,0 +1,80 @@
+{% load staticfiles %} {% block navbar %}
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand">
+      <img src="{% static 'img/tusur.png' %}" class="img-logo" alt="" />
+    </a>
+    <button
+      class="navbar-toggler"
+      data-target="#my-nav"
+      data-toggle="collapse"
+      aria-controls="my-nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"
+        ><i class="fa fa-align-justify" aria-hidden="true"></i
+      ></span>
+    </button>
+    <div id="my-nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          {% if page == "main" %}
+          <a class="nav-link active" href="/"
+            >Главная <span class="fa fa-home fa-lg"></span>
+          </a>
+          {% else %}
+          <a class="nav-link" href="/"
+            >Главная <span class="fa fa-home fa-lg"></span>
+          </a>
+          {% endif %}
+        </li>
+        <li class="nav-item">
+          {% if page == "Меню" %}
+          <a class="nav-link active" href="/menu">
+            Меню <span class="fa fa-search fa-lg"></span
+          ></a>
+          {% else %}
+          <a class="nav-link" href="/menu"> 
+            Меню <span class="fa fa-search fa-lg"></span
+          ></a>
+          {% endif %}
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          {% if page == "Корзина" %}
+          <a class="nav-link active" href="/basket">
+            Корзина <span class="fa fa-shopping-cart fa-lg"></span>
+          </a>
+          {% else %}
+          <a class="nav-link" href="/basket">
+            Корзина <span class="fa fa-shopping-cart fa-lg"></span>
+          </a>
+          {% endif %}
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+          <p class="user-block">
+            <a href="/orders" class="nav-link item-auth">{{user.firstname}} {{user.lastname.0}}. {{user.middlename.0}}. </a>
+            <form action="{% url 'logout' %}" method="post" class="logout-form">
+              {%csrf_token%}
+              <button 
+              class="nav-link item-auth" 
+              data-toggle="tooltip" 
+              data-placement="bottom" 
+              type="submit" 
+              title="Выйти из аккаунта">
+                <i class="fa fa-user-circle"></i>
+              </button>
+            </form>
+          </p>
+          {% else %}
+          <a class="nav-link item-auth " href="/login">Вход</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{%endblock%}

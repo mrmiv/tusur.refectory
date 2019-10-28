@@ -1,0 +1,46 @@
+  .footer{
+    background:#dfe6e9; 
+}
+
+.blockstyle{
+    padding: 40px 20px;
+}
+
+.blockstyle.feedback{
+    text-align: end;
+}
+
+p.text-footer{
+    font-size: 14px;
+    margin: 0 0 20px 0;
+} 
+
+.social>a>i.social-item{
+    padding: 5px 10px;
+    color: black;
+}
+
+.tomato{
+   width: 250px;
+   margin-top: -70px;
+}
+.scroll_up{
+    position: absolute;
+    font-size: 14pt;
+    background: #fff;
+    box-shadow: 0 0 4px 0 black;
+    padding: 5px 10px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+textarea#message-text.form-control{
+    height: 200px;
+}
+
+@media screen and (max-width: 496px){
+    .tomato{
+     width: 200px;
+     margin-top: -55px;
+    }
+}
