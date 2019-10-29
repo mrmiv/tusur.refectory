@@ -40,12 +40,21 @@ h1.text-about{
 /* text-info */
 .block-info{
     background: #005bac;
+    height: 230px;
 }
 
 .block-text-info{
-    width: 80%;
+    width: 70%;
+    height: 130px;
     text-align: center;
     background: #fff;
+    margin: 50px 0 0px 0px;
+    color: black;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
 @media screen and (max-width:662px){
@@ -54,6 +63,17 @@ h1.text-about{
     }
     .block-about{
         padding: 25px 0;
+    }
+    .block-text-info{
+        width: 110%;
+        font-size: 17px;
+        margin: 30px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .block-info{
+        height: 190px;
     }
 }
 
@@ -67,10 +87,25 @@ h1.text-about{
     .block-img{
         width: 350px;
     }
+    .block-text-info {
+        width: 100%;
+        font-size: 15px;
+        margin: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media screen and (max-width:360px){
     .block-about{
         top: 80%;
     }
+    .block-text-info {
+        width: 120%;
+       height: 100px;
+       font-size: 11px;
+       margin: 40px;
+       margin-left: -10px;
+       margin-right: auto;
+       }
 }

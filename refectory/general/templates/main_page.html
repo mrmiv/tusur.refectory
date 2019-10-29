@@ -14,6 +14,7 @@
     />
     {% include "includes/links/links.html" %}
     <link rel="stylesheet" href="{%static 'css/main.css'%}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/anim.."/>
   </head>
   <body>
     {% include "includes/navbar.html" %}
@@ -70,14 +71,20 @@
     <div class="block-info">
       <div class="container">
         <div class="row">
-          <div class="col-md-4 block-text-info">
-            <p>Заходи в меню и выбирай блюдо</p>
+          <div class="col-4">
+            <div class="block-text-info">
+                <p>Заходи в меню и выбирай блюдо</p>
           </div>
-          <div class="col-md-4 block-text-info">
-            <p>Добавляй блюдо в корзину и указывай время, когда заберешь заказ</p>
           </div>
-          <div class="col-md-4 block-text-info">
+          <div class="col-4 ">
+            <div class="block-text-info">
+                <p>Добавляй блюдо в корзину и указывай время, когда заберешь заказ</p>
+            </div> 
+          </div>
+          <div class="col-4">
+              <div class="block-text-info">
             <p>Оплати и забери в нужное время</p>
+          </div>
           </div>
         </div>
       </div>
@@ -85,6 +92,6 @@
     <!-- <div class="" style="height:4000px"></div> -->
     {% include "includes/footer.html" %} 
     {%include "includes/links/scripts.html"%}
-    
+    <script src="js/parallax.js"></script>
   </body>
 </html>
