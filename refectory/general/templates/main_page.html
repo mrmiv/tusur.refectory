@@ -14,7 +14,6 @@
     />
     {% include "includes/links/links.html" %}
     <link rel="stylesheet" href="{%static 'css/main.css'%}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/anim.."/>
   </head>
   <body>
     {% include "includes/navbar.html" %}
@@ -73,8 +72,8 @@
         <div class="row">
           <div class="col-4 coloumn">
             <div class="block-text-info mx-auto">
-                <p class="info-text">Заходи в меню и выбирай блюдо</p>
-          </div> 
+              <p class="info-text">Заходи в меню и выбирай блюдо</p>   
+            </div> 
           </div>
           <div class="col-4 coloumn">
             <div class="block-text-info mx-auto">
@@ -92,6 +91,23 @@
     <!-- <div class="" style="height:4000px"></div> -->
     {% include "includes/footer.html" %} 
     {%include "includes/links/scripts.html"%}
-    <script src="js/parallax.js"></script>
+    <script>
+      $(document).ready(function(){
+          calc()
+          $(window).bind('resize',function(){
+            calc();
+          });
+      })
+
+      function calc() { 
+          $('body').prepend('<div>' + $(window).width() + '</div>');
+
+          var height = parseInt($('p.info-text').parent().css('height'));
+          var padding = parseInt($('p.info-text').parent().css('padding'));
+          // console.log(height, padding);
+          $('.info-text').css('height',height-2*padding);
+         };
+      
+    </script>
   </body>
 </html>

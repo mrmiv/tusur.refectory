@@ -53,6 +53,7 @@ h1.text-about{
     width: 230px;
     padding: 15px;
     background: #fff;
+    box-shadow: 0 0 15px 1px rgb(0, 0, 0, 0.5);
     /* margin: 50px 0 0px 0px; */
 }
 
@@ -62,8 +63,13 @@ p.info-text{
     font-size: 20px;
     color: black;
     margin-bottom: 0;
+
+    /* for vertical align */
+    display: table-cell;
+    vertical-align: middle;
 }
 
+/* media */
 
 @media screen and (max-width:992px){
     .block-text-info{
@@ -135,17 +141,21 @@ p.info-text{
     }
     .block-text-info{
         padding: 8px;
-        height: 90px;
-        width: 90px;
+        height: 105px;
+        width: 105px;
     }
     p.info-text{
-        font-size: 10px;
+        font-size: 9px;
     }
 }
 
 @media screen and (max-width:360px){
     .block-about{
         top: 80%;
+    }
+    .block-text-info{
+        height: 90px;
+        width: 90px;
     }
     /* .block-text-info {
         width: 120%;
