@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Главная страница</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    {% include "includes/links/links.html" %}
+    <link rel="stylesheet" href="{%static 'css/main.css'%}" />
+  </head>
+  <body>
+    {% include "includes/navbar.html" %}
+    <!-- header  -->
+    <header class="container welcome">
+      <h1 class="welcome-text">
+        Добро пожаловать <br />
+        в ИН-столовую
+      </h1>
+    </header>
+    <!-- bg images -->
+    <div class="bg-images">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div
+            class="
+          block-img 
+          first-img  
+          animated 
+          rotateIn"
+            style="
+          animation-duration: 1.5s;
+          animation-delay:0.5s;
+          "
+          >
+            <img class="food" src="{% static 'img/dishes/dish-1.png' %}" />
+          </div>
+        </div>
+        <div class="row">
+          <!-- container about -->
+          <div class="block-about">
+            <div сlass="container">
+              <div class="row no-gutters justify-content-center">
+                <div class=" col-8 col-sm-8 col-md-6 justify-content-center">
+                  <h1 class="text-about">
+                    Теперь у вас есть уникальная возможность заказть еду онлайн
+                    в столовых ТУСУР и быть в курсе наличия блюд
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div
+            class="block-img second-img"
+            style="
+          margin-top: -35px;
+          z-index: -1;"
+          >
+            <img class="food" src="{% static 'img/dishes/dish-2.png' %}" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block-info">
+      <div class="container">
+        <div class="row">
+          <div class="col-4" style="padding: 5% 0;">
+            <div class="block-text-info mx-auto">
+              <p class="text-info-p align-middle"> Заходи в меню и выбирай блюдо</p>
+            </div>
+          </div>
+          <div class="col-4" style="padding: 5% 0;">
+            <div class="block-text-info mx-auto">
+              <p class="text-info-p  align-middle">
+                Добавляй блюдо в корзину и указывай время, когда заберешь заказ
+              </p>
+            </div>
+          </div>
+          <div class="col-4" style="padding: 5% 0;">
+            <div class="block-text-info mx-auto">
+              <p class="text-info-p align-middle"> Оплати и забери в нужное время</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="" style="height:4000px"></div> -->
+    {% include "includes/footer.html" %} 
+    {%include "includes/links/scripts.html"%}
+  </body>
+</html>
