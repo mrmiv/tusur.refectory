@@ -140,6 +140,8 @@ STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 LOGIN_REDIRECT_URL = '/'
 
 AUTH_USER_MODEL = 'user_auth.ExtUser'
