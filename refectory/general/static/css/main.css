@@ -17,7 +17,7 @@ img.food{
 .welcome-text{
     text-align: center;
     margin-top: 90px;
-    font-family: 'Neucha', cursive;
+    font-family: 'Neucha', cursive; 
     font-size: 42px;
 }
 
@@ -42,21 +42,53 @@ h1.text-about{
     background: #005bac;
 }
 
-.block-text-info{
-    width: 80%;
-    margin-top:auto;
-    margin-bottom:auto;
-    padding: 15%;
-    background: #fff;
-    min-height: 200px;
+.coloumn{
+    padding: 20px;
 }
 
-p.text-info-p{
-    /* margin: 15% 0 0 0 ; */
+.block-text-info{
+    /* width: 70%; */
+    /* height: 130px; */
+    height: 230px;
+    width: 230px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 0 15px 1px rgb(0, 0, 0, 0.5);
+    /* margin: 50px 0 0px 0px; */
+}
+
+p.info-text{
     text-align: center;
-    font-size: 14px;
-    font-family: 'Comfortaa', cursive;
-    color: #000;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 20px;
+    color: black;
+    margin-bottom: 0;
+
+    /* for vertical align */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* media */
+
+@media screen and (max-width:992px){
+    .block-text-info{
+        height: 180px;
+        width: 180px;
+    }
+    p.info-text{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .block-text-info{
+        height: 150px;
+        width: 150px;
+    }
+    p.info-text{
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width:662px){
@@ -66,6 +98,25 @@ p.text-info-p{
     .block-about{
         padding: 25px 0;
     }
+    /* .block-text-info{
+        width: 110%;
+        font-size: 17px;
+        margin: 30px;
+        margin-left: auto;
+        margin-right: auto;
+
+    } */
+    .block-text-info{
+        padding: 10px;
+        height: 120px;
+        width: 120px;
+    }
+    p.info-text{
+        font-size: 12px;
+    }
+    /* .block-info{
+        height: 190px;
+    } */
 }
 
 @media screen and (max-width:494px){
@@ -73,10 +124,28 @@ p.text-info-p{
         font-size: 16px;
     }
     header>h1.welcome-text{
-        font-size: 20px;
+        height: 100px;
     }
     .block-img{
         width: 350px;
+    }
+    /* .block-text-info {
+        width: 100%;
+        font-size: 15px;
+        margin: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    } */
+    .coloumn{
+        padding: 8px;
+    }
+    .block-text-info{
+        padding: 8px;
+        height: 105px;
+        width: 105px;
+    }
+    p.info-text{
+        font-size: 9px;
     }
 }
 
@@ -84,4 +153,16 @@ p.text-info-p{
     .block-about{
         top: 80%;
     }
+    .block-text-info{
+        height: 90px;
+        width: 90px;
+    }
+    /* .block-text-info {
+        width: 120%;
+       height: 100px;
+       font-size: 11px;
+       margin: 40px;
+       margin-left: -10px;
+       margin-right: auto;
+       } */
 }

@@ -28,13 +28,13 @@
     <div class="bg-images">
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div
-            class="
-          block-img
-          first-img
-          animated
+          <div 
+          class="
+          block-img 
+          first-img  
+          animated 
           rotateIn"
-            style="
+          style="
           animation-duration: 1.5s;
           animation-delay:0.5s;
           "
@@ -58,43 +58,62 @@
           </div>
         </div>
         <div class="row justify-content-center">
-          <div
-            class="block-img second-img"
-            style="
+          <div class="block-img second-img"
+          style="
           margin-top: -35px;
-          z-index: -1;"
-          >
+          z-index: -1;">
             <img class="food" src="{% static 'img/dishes/dish-2.png' %}" />
           </div>
         </div>
       </div>
     </div>
-
     <div class="block-info">
       <div class="container">
         <div class="row">
-          <div class="col-4" style="padding: 5% 0;">
-            <div class="block-text-info mx-auto">
-              <p class="text-info-p align-middle"> Заходи в меню и выбирай блюдо</p>
-            </div>
+          <div class="col-4 coloumn">
+            <div class="block-text-info mx-auto" style="animation-delay: 0.1s;">
+              <p class="info-text">Заходи в меню и выбирай блюдо</p>   
+            </div> 
           </div>
-          <div class="col-4" style="padding: 5% 0;">
-            <div class="block-text-info mx-auto">
-              <p class="text-info-p  align-middle">
-                Добавляй блюдо в корзину и указывай время, когда заберешь заказ
-              </p>
-            </div>
+          <div class="col-4 coloumn">
+            <div class="block-text-info mx-auto"  style="animation-delay: 0.2s;">
+                <p class="info-text">Добавляй блюдо в корзину и указывай время, когда заберешь заказ</p>
+            </div> 
           </div>
-          <div class="col-4" style="padding: 5% 0;">
-            <div class="block-text-info mx-auto">
-              <p class="text-info-p align-middle"> Оплати и забери в нужное время</p>
-            </div>
+          <div class="col-4 coloumn">
+              <div class="block-text-info mx-auto" style="animation-delay: 0.3s;">
+            <p class="info-text">Оплати и забери в нужное время</p>
+          </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="" style="height:4000px"></div> -->
-    {% include "includes/footer.html" %}
+    <!-- 
+      для начала обрати внимание на строки (74,79,84)
+      для блоков указана задержка анимации
+      для единичных блоков при ее необходимости лучше указать в css у класса этого блока,
+      в данном случае нецелесообразно давать три различных класса одинаковым блокам, чтобы задать только анимацию
+      теперь: 
+      открой refectory/general/static/js/animate.js 
+      
+    -->
+    {% include "includes/footer.html" %} 
     {%include "includes/links/scripts.html"%}
+    <script>
+      $(document).ready(function(){
+          calc()
+          $(window).bind('resize',function(){
+            calc();
+          });
+      })
+
+      function calc() { 
+          var height = parseInt($('p.info-text').parent().css('height'));
+          var padding = parseInt($('p.info-text').parent().css('padding'));
+          // console.log(height, padding);
+          $('.info-text').css('height',height-2*padding);
+         };
+      
+    </script>
   </body>
 </html>
