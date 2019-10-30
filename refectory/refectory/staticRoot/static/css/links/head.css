@@ -1,0 +1,41 @@
+.head-img{
+    max-width: 100%;
+    height: auto;
+    
+}
+.head-img-div{
+    width: 500px;
+    /* position: absolute; */
+    margin-top: -20%;
+    z-index: -5;
+}
+
+.head-h{
+    position: absolute;
+    top: 80px;
+    padding: 4px 10px;
+    background: #fff;
+    box-shadow: 0 0 5px 0 black;
+}
+
+.head-h>h1{
+    font-size: 24px;
+}
+
+@media screen and (max-width:1199px){
+    .head-img-div{
+        margin-top: -25%;
+    }
+}
+
+@media screen and (max-width:991px){
+    .head-img-div{
+        margin-top: -35%;
+    }
+}
+
+@media screen and (max-width:767px){
+    .head-img-div{
+        margin-top: -45%;
+    }
+}

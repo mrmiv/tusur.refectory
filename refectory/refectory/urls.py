@@ -1,8 +1,10 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from user_auth import views as user_views
 from general import views as general_views
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # path('', include('general.urls')),
@@ -12,4 +14,4 @@ urlpatterns = [
     path('basket/', include('basket.urls')),
     path('orders/', include('orders.urls')),
     path('admin/', admin.site.urls),
-]
+]+static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
