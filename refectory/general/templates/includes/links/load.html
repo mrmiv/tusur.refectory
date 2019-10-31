@@ -1,0 +1,13 @@
+{%block loadjs%}
+<script>
+    // preloader
+    $(window).on('load', function () {
+        var $preloader = $('#page-preloader'),
+            $spinner   = $preloader.find('#pizza');
+        $spinner.delay(350).fadeOut();
+        $preloader.delay(500).fadeOut('slow');
+        
+        $('body', 'html').removeClass('overflow')
+    });
+</script> 
+{%endblock%}

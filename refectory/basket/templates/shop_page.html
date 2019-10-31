@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,8 @@
     />
     {% include "includes/links/links.html" %} 
   </head>
-  <body>
+  <body class="overflow">
+    {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %} 
     {% include "includes/head.html" %} 
 
@@ -22,5 +23,6 @@
     {% include "includes/footer.html" %} 
 
     {%include "includes/links/scripts.html"%}
+    {%include "includes/links/load.html"%}
   </body>
 </html>

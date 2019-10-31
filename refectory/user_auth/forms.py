@@ -17,10 +17,9 @@ class UserCreationForm(forms.ModelForm):
         label='Подтверждение',
         widget=forms.PasswordInput
     )
-    lastname = forms.CharField(label='Имя', required=False)
-    firstname = forms.CharField(label='Фамилия', required=False)
+    lastname = forms.CharField(label='Имя', required=True)
+    firstname = forms.CharField(label='Фамилия', required=True)
     middlename = forms.CharField(label='Отчество', required=False)
-
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')

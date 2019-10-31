@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, Http404
 from django.contrib.auth import login, authenticate, logout
 from .forms import LoginForm, UserCreationForm
 from general import views as general_views
+from django.contrib.auth import get_user_model
+
 
 def index(request):
     return render(request, 'index.html')
@@ -18,18 +20,33 @@ def register(request):
             firstname = form.cleaned_data['firstname'] #имя
             middlename = form.cleaned_data['middlename'] #отчество
             user = authenticate( 
-                username = email, 
-                password = password, 
-                lastname = lastname,
-                firstname = firstname,
-                middlename = middlename,
-                )
+            username = email, 
+            password = password, 
+            lastname = lastname,
+            firstname = firstname,
+            middlename = middlename,
+            )
             login(request, user)
             return redirect('/')
+        else:
+            this_user = get_user_model()
+            # print(form.data['email'])
+            try:
+                this_user.objects.get(email=form.data['email'])
+                context = {
+                'form': form,
+                'error':'Пользователь уже существует'
+                }
+            except this_user.DoesNotExist:
+                context = {
+                'form': form,
+                'error':'Ошибка валидации формы, проверьте данные'
+                }
+            return render(request, 'register.html', context)
     else:
         form = UserCreationForm(request.POST)
-    context = {'form': form }
-    return render(request, 'register.html', context)
+        context = {'form': form }
+        return render(request, 'register.html', context)
 
 def UserLogin(request):
     form = LoginForm()

@@ -15,7 +15,8 @@
     {% include "includes/links/links.html" %}
     <link rel="stylesheet" href="{%static 'css/main.css'%}" />
   </head>
-  <body>
+  <body class="overflow">
+    {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %}
     <!-- header  -->
     <header class="container welcome">
@@ -49,7 +50,7 @@
               <div class="row no-gutters justify-content-center">
                 <div class=" col-8 col-sm-8 col-md-6 justify-content-center">
                   <h1 class="text-about">
-                    Теперь у вас есть уникальная возможность заказть еду онлайн
+                    Теперь у Вас есть уникальная возможность заказать еду онлайн
                     в столовых ТУСУР и быть в курсе наличия блюд
                   </h1>
                 </div>
@@ -82,24 +83,16 @@
           </div>
           <div class="col-4 coloumn">
               <div class="block-text-info mx-auto" style="animation-delay: 0.3s;">
-            <p class="info-text">Оплати и забери в нужное время</p>
+            <p class="info-text">Оплати заказ и забери в нужное время</p>
           </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- 
-      для начала обрати внимание на строки (74,79,84)
-      для блоков указана задержка анимации
-      для единичных блоков при ее необходимости лучше указать в css у класса этого блока,
-      в данном случае нецелесообразно давать три различных класса одинаковым блокам, чтобы задать только анимацию
-      теперь: 
-      открой refectory/general/static/js/animate.js 
-      
-    -->
     {% include "includes/footer.html" %} 
-    {%include "includes/links/scripts.html"%}
+    {% include "includes/links/scripts.html" %}
     <script>
+      // resize cards
       $(document).ready(function(){
           calc()
           $(window).bind('resize',function(){
@@ -115,5 +108,12 @@
          };
       
     </script>
+    {%include "includes/links/load.html"%}
+    <p style="
+    background: #000;
+    color: #fff; 
+    text-align:center;
+    margin: 0;"
+    >Версия сайта 1.1</p>
   </body>
 </html>

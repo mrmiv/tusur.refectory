@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web&display=swap');  /* 'Istok Web', sans-serif */
 @import url('https://fonts.googleapis.com/css?family=Neucha&display=swap'); /*'Neucha', cursive */
 
+.overflow{
+    overflow:hidden;
+}
+
 .block-img{
     width: 500px;
     z-index: -2 !important;

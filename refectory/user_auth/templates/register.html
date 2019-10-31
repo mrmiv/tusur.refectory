@@ -66,6 +66,8 @@
                         <label for="password2">Подтверждение пароля*</label>
                         {% render_field form.password2 class="form-control " placeholder="Password" required=True %}
 
+                        <p class="form-error text-center">{% render_field error %}</p>
+                        
                         <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
                       </div>
                     </div>
