@@ -3,6 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Istok+Web&display=swap');  /* 'Istok Web', sans-serif */
 @import url('https://fonts.googleapis.com/css?family=Neucha&display=swap'); /*'Neucha', cursive */
 
+p,h1,h2,h3,h4,h5,h6{
+    cursor: context-menu;
+}
+
 .block-img{
     width: 500px;
     z-index: -2 !important;
@@ -24,7 +28,7 @@ img.food{
 .block-about{
     top: 90%;
     width: 100%;
-    margin-top: -80px;
+    /* margin-top: -80px; */
     padding: 35px 0;
     background: rgb(255, 255, 255, 0.5);
     box-shadow: 0 0 5px -2px black;

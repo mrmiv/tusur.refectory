@@ -6,32 +6,27 @@ $(document).ready(function(){
 })
 
 function parallaxScroll(){
-    // var scrolled = $(window).scrollTop();
-    // console.log(scrolled)
+    var scrolled = $(window).scrollTop();
+    console.log(scrolled)
     // Нижнее поле
+    console.log($('.block-info').offset().top-$(window).height())
     if (scrolled>=$('.block-info').offset().top-$(window).height()) {
-        $('.block-text-info').addClass('flipInX');
+        $('.block-text-info').addClass('pulse');
     }
-    else{
-
-    }
-
 
     //Поле по середине
-    if (scrolled>=$('.block-about').offset().top-$(window).height()*0.9) {
+    if (scrolled>=$('.block-about').offset().top-$(window).height()) {
         $('.text-about').addClass('animated fadeIn');
-    }
-    else{
-        $('.text-about').css('opacity', '0');
     }
 
 
     //Вторая картинка
-    if (scrolled>=$('.second-img').offset().top-$(window).height()*0.9) {
-        $('.second-img').addClass('animated flipInX');
+    if (scrolled>=$('.second-img').offset().top-$(window).height()) {
+        $('.second-img').addClass('flipInX');
     }
-    else{
-        $('.second-img').css('opacity', '0');
+
+    if (scrolled>=$('.animated-tomato').offset().top-$(window).height()) {
+        $('.animated-tomato').addClass('fadeIn');
     }
     
 };

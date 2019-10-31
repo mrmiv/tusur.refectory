@@ -24,6 +24,7 @@ p.text-footer{
    width: 250px;
    margin-top: -70px;
 }
+
 .scroll_up{
     position: absolute;
     font-size: 14pt;
@@ -32,6 +33,11 @@ p.text-footer{
     padding: 5px 10px;
     z-index: 1;
     cursor: pointer;
+}
+
+.scroll_up:hover{
+    box-shadow: 0 0 6px 0 black;
+    font-size: 16px;
 }
 
 textarea#message-text.form-control{
