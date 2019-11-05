@@ -56,7 +56,11 @@
         <li class="nav-item">
           {% if user.is_authenticated %}
           <p class="user-block">
-            <a href="/orders" class="nav-link item-auth">{{user.firstname}} {{user.lastname.0}}. {{user.middlename.0}}. </a>
+            <a href="/orders" class="nav-link item-auth">{{user.firstname}} {{user.lastname.0}}. 
+            {% if user.middlename %}
+            {{user.middlename.0}}.
+            {%endif%}
+            </a>
             <form action="{% url 'logout' %}" method="post" class="logout-form">
               {%csrf_token%}
               <button 

@@ -18,8 +18,36 @@
     {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %} 
     {% include "includes/head.html" %} 
+        <div class="container" style="height: 57vh;">
+            <form action="pay" method="POST">
+              {%csrf_token%}
+              <div class="row">
+                
+                {% for order in basket%}
+                  <div class="col-3">
+                    <h1>Заказ №{{order.id}}</h1>
+                    <h5>Продукты:</h5>
+                    <ul>
+                      {%for product in order.basket.all%}
+                        <li>{{product.name}} - {{product.price}}</li>
+                      {%endfor%}
+                    </ul>
+                  </div>
+                {%endfor%}
+              </div>
+              {%if basket%}
+                <button class="btn btn-success" type="submit">
+                  <H1>PAY</H1>
+                </button>
+              {%else%}
+              <h1 class="text-center">Корзина пустая</h1>
+              <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> 
+                
+              </h4>
+              {%endif%}
+              </form>
+            </div>
 
-    <div class="" style="height:4000px"></div>
     {% include "includes/footer.html" %}
     {%include "includes/links/scripts.html"%}
   </body>

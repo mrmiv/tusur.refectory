@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import pre_save, post_save, m2m_changed
 
 class product(models.Model):
     CATEGORY_CHOICES = (
@@ -8,7 +9,7 @@ class product(models.Model):
         ('3', 'Салаты'),
         ('4', 'Завтраки'),
         ('5', 'Выпечка'),
-        ('6', 'Дополнительно'),
+        ('6', 'Дополнительно')
     )
 
     name = models.CharField(max_length=64)
@@ -17,7 +18,6 @@ class product(models.Model):
     count = models.IntegerField(default=1)
     total_count = models.IntegerField(default=10, editable=False)
     description = models.CharField(max_length=255)
-    additionally = models.ForeignKey('self', null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
