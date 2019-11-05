@@ -20,25 +20,38 @@ p.text-footer{
     color: black;
 }
 
+.animated-tomato{
+    cursor: pointer;
+}
+
 .tomato{
    width: 250px;
    margin-top: -70px;
+   z-index: 1;
 }
+
 .scroll_up{
     position: absolute;
     font-size: 14pt;
     background: #fff;
     box-shadow: 0 0 4px 0 black;
     padding: 5px 10px;
-    z-index: 1;
+    z-index: 2;
+    transition: 200ms;
+    
     cursor: pointer;
 }
+
+/* .scroll_up:hover{
+    box-shadow: 0 0 6px 0 black;
+    font-size: 16px;
+} */
 
 textarea#message-text.form-control{
     height: 200px;
 }
 
-@media screen and (max-width: 496px){
+@media screen and (max-width: 772px){
     .tomato{
      width: 200px;
      margin-top: -55px;

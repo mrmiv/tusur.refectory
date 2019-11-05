@@ -18,10 +18,22 @@
     {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %} 
     {% include "includes/head.html" %} 
-    <div class="" style="height:4000px"></div>
+    <div class="" style="height:200px"></div>
+    <div class="container">
+      <div class="orders">
+        {%for order in orders%}
+          <h4>
+            total_price: {{order.total_price}} <br>
+            products:
+          </h4>
+          {% for product in order.basket.all %}
+            <p>{{product.name}}</p>
+          {% endfor %}
+        {%endfor%}
+      </div>
+    </div>
     {% include "includes/footer.html" %} 
 
     {%include "includes/links/scripts.html"%}
-    {%include "includes/links/load.html"%}
   </body>
 </html>

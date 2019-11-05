@@ -14,14 +14,33 @@
     />
     {% include "includes/links/links.html" %}
   </head>
-  <body class="overflow">
+  <body class="overflow"
+  style="position: relative;">
     {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %} 
     {% include "includes/head.html" %} 
-    <div class="" style="height:4000px"></div>
+
+    <div id="list-example" class="list-group category">
+      <a class="list-group-item list-group-item-action" href="#list-item-">Категория 1</a>
+      <!-- категории -->
+    </div>
+    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+<!-- divы-категории, внутри которых циклы с фильтрованными продуктами -->
+    </div>
+
+    <div class="container">
+      <div class="row">
+        {%for product in products%}
+          <div class="col-3">
+            {%include "product.html" %}
+          </div>
+        {%endfor%}
+      </div>
+    </div>
+
+
     {% include "includes/footer.html" %} 
 
     {%include "includes/links/scripts.html"%}
-    {%include "includes/links/load.html"%}
   </body>
 </html>

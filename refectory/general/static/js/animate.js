@@ -1,8 +1,5 @@
 $(document).ready(function(){
     parallaxScroll();
-    // console.log(
-    //     $('.block-text-info').offset().top-$(window).height()
-    // )
     $(window).bind('scroll',function(){
         parallaxScroll();
     });
@@ -11,14 +8,19 @@ $(document).ready(function(){
 function parallaxScroll(){
     var scrolled = $(window).scrollTop();
     // console.log(scrolled)
-    // когда пролистали до блока класса block-info
-    if (scrolled>=$('.block-info').offset().top-$(window).height()*0.9) {
-        // добавляем классы (animated обязательно) и название анимации блокам block-text-info
-        // ссылку на названия анимации и где их няглядно потыкать кидал вк
-        $('.block-text-info').addClass('animated fadeIn');
-        // по аналогии накидать анимаций
+
+    // Нижнее поле
+    if (scrolled>=$('.block-info').offset().top-$(window).height()) {
+        $('.block-text-info').addClass('flipInX');
     }
-    else{
-        $('.block-text-info').css('opacity', '0');
+
+    //Поле по середине
+    if (scrolled>=$('.block-about').offset().top-$(window).height()) {
+        $('.text-about').addClass('fadeIn');
+    }
+
+    //Вторая картинка
+    if (scrolled>=$('.second-img').offset().top-$(window).height()) {
+        $('.second-img').addClass('flipInX');
     }
 };
