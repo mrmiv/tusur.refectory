@@ -18,37 +18,46 @@
     {%include "includes/loader.html"%}
     {% include "includes/navbar.html" %} 
     {% include "includes/head.html" %} 
-        <div class="container" style="height: 57vh;">
-            <form action="pay" method="POST">
+        <div class="container" style="height: 57vh;" id='#content'>
+            <form action="pay" method="POST" class="order_in_basket">
               {%csrf_token%}
               <div class="row">
                 
                 {% for order in basket%}
                   <div class="col-3">
                     <h1>Заказ №{{order.id}}</h1>
-                    <h5>Продукты:</h5>
-                    <ul>
+                    <h4>Продукты:</h4>
+                    <ul class="user_basket">
                       {%for product in order.basket.all%}
-                        <li>{{product.name}} - {{product.price}}</li>
+                        <li data-product_li="{{product.id}}">
+                          <h5>
+                              {{product.name}} - {{product.price}} -
+                              <a class="delete_product" data-product_id='{{product.id}}' href="{% url 'delete' %}">
+                                delete
+                                  <i class="fa fas fa-trash"></i>
+                              </a>
+                          </h5>
+                        </li>
                       {%endfor%}
                     </ul>
                   </div>
                 {%endfor%}
               </div>
               {%if basket%}
+                <h3>Total price = {{basket.0.total_price}}</h3>
                 <button class="btn btn-success" type="submit">
                   <H1>PAY</H1>
                 </button>
+              </form>
               {%else%}
               <h1 class="text-center">Корзина пустая</h1>
-              <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> 
-                
-              </h4>
+              <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> </h4>
               {%endif%}
-              </form>
+              
             </div>
 
     {% include "includes/footer.html" %}
     {%include "includes/links/scripts.html"%}
+    <script src="{% static 'js/delete_product_ajax.js' %}"></script>
   </body>
 </html>
