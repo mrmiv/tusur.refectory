@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" class="overflow">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,49 +14,55 @@
     />
     {% include "includes/links/links.html" %}
   </head>
-  <body class="overflow">
+  <body class="overflow"
+  style="
+  display: table;
+  height: 100vh;
+  width: 100%;">
     {%include "includes/loader.html"%}
-    {% include "includes/navbar.html" %} 
-    {% include "includes/head.html" %} 
-
-    <div class="container">
-      <h2 class="text-center">Ожидаемые заказы</h2>
-      <div class="row">
-        {%for order in orders%}
-          {%if order.status_get == False %}
-          <div class="col-3">
-            <h1>id: {{order.id}}</h1>
-            <h4>
-              total_price: {{order.total_price}} <br>
-              products:
-            </h4>
-            {% for product in order.basket.all %}
-              <p>{{product.name}}</p>
-            {% endfor %}
+    <div class="content">
+        {% include "includes/navbar.html" %} 
+        {% include "includes/head.html" %} 
+    
+        <div class="container">
+          <h2 class="text-center">Ожидаемые заказы</h2>
+          <div class="row">
+            {%for order in orders%}
+              {%if order.status_get == False %}
+              <div class="col-3">
+                <h1>id: {{order.id}}</h1>
+                <h4>
+                  total_price: {{order.total_price}} <br>
+                  products:
+                </h4>
+                {% for product in order.basket.all %}
+                  <p>{{product.name}}</p>
+                {% endfor %}
+              </div>
+              {%endif%}
+            {%endfor%}
           </div>
-          {%endif%}
-        {%endfor%}
-      </div>
-      
-      <hr>
-      <h2 class="text-center">Выданные заказы</h2>
-
-      <div class="row">
-        {%for order in orders%}
-          {%if order.status_get == True %}
-          <div class="col-3">
-            <h1>id: {{order.id}}</h1>
-            <h4>
-              total_price: {{order.total_price}} <br>
-              products:
-            </h4>
-            {% for product in order.basket.all %}
-              <p>{{product.name}}</p>
-            {% endfor %}
+          
+          <hr>
+          <h2 class="text-center">Выданные заказы</h2>
+    
+          <div class="row">
+            {%for order in orders%}
+              {%if order.status_get == True %}
+              <div class="col-3">
+                <h1>id: {{order.id}}</h1>
+                <h4>
+                  total_price: {{order.total_price}} <br>
+                  products:
+                </h4>
+                {% for product in order.basket.all %}
+                  <p>{{product.name}}</p>
+                {% endfor %}
+              </div>
+              {%endif%}
+            {%endfor%}
           </div>
-          {%endif%}
-        {%endfor%}
-      </div>
+        </div>
     </div>
 
     {% include "includes/footer.html" %} 

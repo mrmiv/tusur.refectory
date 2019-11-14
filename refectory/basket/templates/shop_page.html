@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en" class="overflow">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,47 +14,53 @@
     />
     {% include "includes/links/links.html" %} 
   </head>
-  <body class="overflow">
+  <body class="overflow"
+  style="
+  display: table;
+  height: 100vh;
+  width: 100%;">
     {%include "includes/loader.html"%}
-    {% include "includes/navbar.html" %} 
-    {% include "includes/head.html" %} 
-        <div class="container" style="height: 57vh;" id='#content'>
-            <form action="pay" method="POST" class="order_in_basket">
-              {%csrf_token%}
-              <div class="row">
-                
-                {% for order in basket%}
-                  <div class="col-3">
-                    <h1>Заказ №{{order.id}}</h1>
-                    <h4>Продукты:</h4>
-                    <ul class="user_basket">
-                      {%for product in order.basket.all%}
-                        <li data-product_li="{{product.id}}">
-                          <h5>
-                              {{product.name}} - {{product.price}} -
-                              <a class="delete_product" data-product_id='{{product.id}}' href="{% url 'delete' %}">
-                                delete
-                                  <i class="fa fas fa-trash"></i>
-                              </a>
-                          </h5>
-                        </li>
-                      {%endfor%}
-                    </ul>
+    <div class="content">
+        {% include "includes/navbar.html" %} 
+        {% include "includes/head.html" %} 
+            <div class="container" style="height: 57vh;" id='#content'>
+                <form action="pay" method="POST" class="order_in_basket">
+                  {%csrf_token%}
+                  <div class="row">
+                    
+                    {% for order in basket%}
+                      <div class="col-md-4 col-12">
+                        <h3>Заказ №{{order.id}}</h3>
+                        <h4>Продукты:</h4>
+                        <ul class="user_basket">
+                          {%for product in order.basket.all%}
+                            <li data-product_li="{{product.id}}">
+                              <h5>
+                                  {{product.name}} - {{product.price}} -
+                                  <a class="delete_product" data-product_id='{{product.id}}' href="{% url 'delete' %}">
+                                    delete
+                                      <i class="fa fas fa-trash"></i>
+                                  </a>
+                              </h5>
+                            </li>
+                          {%endfor%}
+                        </ul>
+                      </div>
+                    {%endfor%}
                   </div>
-                {%endfor%}
-              </div>
-              {%if basket%}
-                <h3>Total price = {{basket.0.total_price}}</h3>
-                <button class="btn btn-success" type="submit">
-                  <H1>PAY</H1>
-                </button>
-              </form>
-              {%else%}
-              <h1 class="text-center">Корзина пустая</h1>
-              <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> </h4>
-              {%endif%}
-              
-            </div>
+                  {%if basket%}
+                    <h3>Total price = {{basket.0.total_price}}</h3>
+                    <button class="btn btn-success" type="submit">
+                      <H1>PAY</H1>
+                    </button>
+                  </form>
+                  {%else%}
+                  <h1 class="text-center">Корзина пустая</h1>
+                  <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> </h4>
+                  {%endif%}
+                  
+                </div>
+    </div>
 
     {% include "includes/footer.html" %}
     {%include "includes/links/scripts.html"%}

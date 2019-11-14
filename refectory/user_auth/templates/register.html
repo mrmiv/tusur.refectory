@@ -50,10 +50,10 @@
                     {%csrf_token%}
                     <div class="form-row justify-content-center">
                       <div class="form-group col-12 col-lg-6">
-                        <label for="firstname">Фамилия</label>
-                        {% render_field form.firstname class="form-control " placeholder="Фамилия" %}
-                        <label for="lastname">Имя</label>
-                        {% render_field form.lastname class="form-control" placeholder="Имя" %}                
+                        <label for="lastname">Фамилия*</label>
+                        {% render_field form.lastname class="form-control " placeholder="Фамилия" %}
+                        <label for="firstname">Имя*</label>
+                        {% render_field form.firstname class="form-control" placeholder="Имя" %}                
                         <label for="middlename">Отчество</label>
                         {% render_field form.middlename class="form-control " placeholder="Отчество" %}
               

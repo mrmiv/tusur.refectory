@@ -1,4 +1,8 @@
-  .footer{
+.content{
+    display: table-row;
+}
+
+.footer{
     background-color:#dfe6e9; 
 }
 
@@ -15,22 +19,39 @@ p.text-footer{
     margin: 0 0 20px 0;
 } 
 
+.social{
+    font-size: 14px;
+}
+
 .social>a>i.social-item{
     padding: 5px 10px;
     color: black;
 }
 
-.animated-tomato{
-    cursor: pointer;
+.social>a>i.social-item:hover{
+    color: #005BAA;
+}
+
+.feedback-btn{
+    font-size: 14px;
 }
 
 .tomato{
    width: 250px;
-   margin-top: -70px;
+   /* margin-top: -70px; */
    z-index: 1;
+   cursor: pointer;
+   transition: 200ms;
+   /* position: absolute; */
+}
+
+.tomato:hover .scroll_up{
+    background: #000;
+    color: #fff;
 }
 
 .scroll_up{
+    color: #000;
     position: absolute;
     font-size: 14pt;
     background: #fff;
@@ -38,14 +59,13 @@ p.text-footer{
     padding: 5px 10px;
     z-index: 2;
     transition: 200ms;
-    
+    margin-top: -40px;
     cursor: pointer;
+    width: 72px;
+    left: calc(50% - 36px)
 }
 
-/* .scroll_up:hover{
-    box-shadow: 0 0 6px 0 black;
-    font-size: 16px;
-} */
+
 
 textarea#message-text.form-control{
     height: 200px;
@@ -54,6 +74,13 @@ textarea#message-text.form-control{
 @media screen and (max-width: 772px){
     .tomato{
      width: 200px;
-     margin-top: -55px;
+     /* margin-top: 0px;  */
+    }
+    .blockstyle.feedback{
+        text-align: center !important;
+    }
+    .blockstyle{
+        padding: 10px 20px;
+        text-align: center !important;
     }
 }

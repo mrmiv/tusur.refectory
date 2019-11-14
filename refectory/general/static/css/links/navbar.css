@@ -1,14 +1,32 @@
-ul.navbar-nav>li.nav-item{
-    padding: 4px 10px;
-    height: 45px;
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.overflow{
+    overflow:hidden;
+}
+
+#button-collapse{
+    background:none;
+    border:none;
+    border:none;
+    font-size: 18px;
+    text-align: center;
+}
+
+li.nav-item{
+    padding: 4px 0;
 }
 
 a.nav-link{
     color: white;
     transition: 0.4s;
-    margin-right: 10px; 
+    text-align: end;
+    /* margin-right: 10px;  */
     font-size: 14px;
-    padding: 6px;
+    padding-left: 35px;
+    margin: 0 4px;
 }
 
 a.nav-link:hover{
@@ -29,23 +47,45 @@ p.user-block{
 a.item-auth{
     color: #005baa; 
     background-color: #fff;
-    margin-right: 0;
+    padding: 5px 12px;
+    cursor: context-menu;
+    margin: auto;
 }
 
 form.logout-form{
     display: inline-flex;
+    width: 100%;
+    margin: auto;
 }
 
 button.nav-link.item-auth{
-    background: red;
+    background: rgb(255, 0, 0);
     color: white;
     border: none;
     font-size: 14px;
     padding: 6px 10px !important;
+    width: 100%;
 }
 
 .navbar-toggler-icon {
     color: white;
+}
+
+.collapse-ul{
+    position: absolute;
+    top:100%;
+    /* right: 0; */
+    background: #005baa;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    /* padding: 15px 10px; */
+}
+
+#nav-ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .img-logo{

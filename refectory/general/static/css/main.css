@@ -7,10 +7,6 @@ p,h1,h2,h3,h4,h5,h6{
     cursor: context-menu;
 }
 
-.overflow{
-    overflow:hidden;
-}
-
 .block-img{
     width: 500px;
     z-index: -2 !important;
@@ -58,11 +54,19 @@ h1.text-about{
     /* width: 70%; */
     /* height: 130px; */
     height: 230px;
+    line-height: 230px;
     width: 230px;
-    padding: 15px;
+    padding: 0 10px;
     background: #fff;
-    box-shadow: 0 0 15px 1px rgb(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 1px rgb(0, 0, 0, 0.25);
+    transition: 150ms;
     /* margin: 50px 0 0px 0px; */
+}
+
+.block-text-info:hover{
+    /* border-radius: 20px; */
+    margin-top: -5px;
+    box-shadow: 0 5px 15px 1px rgb(0, 0, 0, 0.5);
 }
 
 p.info-text{
@@ -73,7 +77,8 @@ p.info-text{
     margin-bottom: 0;
 
     /* for vertical align */
-    display: table-cell;
+    line-height: normal;
+    display: inline-block;
     vertical-align: middle;
 }
 
@@ -83,6 +88,7 @@ p.info-text{
     .block-text-info{
         height: 180px;
         width: 180px;
+        line-height: 180px;
     }
     p.info-text{
         font-size: 14px;
@@ -92,6 +98,7 @@ p.info-text{
 @media screen and (max-width:768px){
     .block-text-info{
         height: 150px;
+        line-height: 150px;
         width: 150px;
     }
     p.info-text{
@@ -115,8 +122,9 @@ p.info-text{
 
     } */
     .block-text-info{
-        padding: 10px;
+        padding: 0 10px;
         height: 120px;
+        line-height: 120px;
         width: 120px;
     }
     p.info-text{
@@ -148,8 +156,9 @@ p.info-text{
         padding: 8px;
     }
     .block-text-info{
-        padding: 8px;
+        padding: 0 8px;
         height: 105px;
+        line-height: 105px;
         width: 105px;
     }
     p.info-text{
@@ -163,6 +172,7 @@ p.info-text{
     }
     .block-text-info{
         height: 90px;
+        line-height: 90px;
         width: 90px;
     }
     /* .block-text-info {
@@ -174,3 +184,10 @@ p.info-text{
        margin-right: auto;
        } */
 }
+/* 
+@-moz-document url-prefix() {
+    p.info-text {
+      display: block;
+      outline: none;
+    }
+  } */

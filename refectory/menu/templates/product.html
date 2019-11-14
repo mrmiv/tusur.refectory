@@ -1,17 +1,17 @@
 {%block product%}
 <form method="POST" action="add_product" class="add_product_form">
-    {%csrf_token%}
-    <h1>
-        {{product.name}}
-    </h1>
-    <p>
-        {{product.description}}
-    </p>
-    <p>
-        {{product.price}}$
-    </p>
-    {%if user.is_authenticated %}
-    <button class="btn btn-success" type="submit" data-id={{product.id}}>+</button>
-    {%endif%}
+        {%csrf_token%}
+        <h3>
+            {{product.name}}
+        </h3>
+        <h5>
+           Описание: {{product.description}}
+        </h5>
+        <h6>
+           Цена: {{product.price}}$
+        </h6>
+        {%if user.is_authenticated %}
+        <button class="btn btn-success" type="submit" data-id={{product.id}}>Добавить в корзину</button>
+        {%endif%}
 </form>
 {%endblock%}

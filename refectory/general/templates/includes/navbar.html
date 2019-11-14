@@ -1,34 +1,39 @@
 {% load staticfiles %} {% block navbar %}
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="/">
       <img src="{% static 'img/tusur.png' %}" class="img-logo" alt="" />
     </a>
-    <button
-      class="navbar-toggler"
-      data-target="#my-nav"
-      data-toggle="collapse"
-      aria-controls="my-nav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"
-        ><i class="fa fa-align-justify" aria-hidden="true"></i
-      ></span>
-    </button>
-    <div id="my-nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          {% if page == "main" %}
-          <a class="nav-link active" href="/"
-            >Главная <span class="fa fa-home fa-lg"></span>
-          </a>
-          {% else %}
-          <a class="nav-link" href="/"
-            >Главная <span class="fa fa-home fa-lg"></span>
-          </a>
-          {% endif %}
-        </li>
+    <div class="menu-collapse d-flex">
+        <div class="d-flex">
+            {% if user.is_authenticated %}
+            <p class="user-block">
+              <a  class="item-auth">{{user.firstname}} {{user.lastname.0}}. 
+              {% if user.middlename %}
+              {{user.middlename.0}}.
+              {%endif%}
+              </a>
+            </p>
+            {% else %}
+            <a class="nav-link item-auth " href="/login">Вход</a>
+            {% endif %}
+          </div>
+        <button
+        id="button-collapse"
+        data-target="#my-nav"
+        data-toggle="collapse"
+        aria-controls="my-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="collapse-elem"
+      >
+        <span class="navbar-toggler-icon"
+          ><i class="fa fa-align-justify" aria-hidden="false"></i
+        ></span>
+      </button>
+    </div>
+    <div id="my-nav" class="collapse collapse-ul collapse-elem">
+      <ul class="ml-auto" id="nav-ul">
         <li class="nav-item">
           {% if page == "Меню" %}
           <a class="nav-link active" href="/menu">
@@ -52,33 +57,58 @@
           </a>
           {% endif %}
         </li>
-        {% endif %}
         <li class="nav-item">
-          {% if user.is_authenticated %}
-          <p class="user-block">
-            <a href="/orders" class="nav-link item-auth">{{user.firstname}} {{user.lastname.0}}. 
-            {% if user.middlename %}
-            {{user.middlename.0}}.
-            {%endif%}
+            {% if page == "Заказы" %}
+            <a class="nav-link active" href="/orders">
+              Заказы  <span class="fa fa-id-card-o fa-lg"></span>
             </a>
-            <form action="{% url 'logout' %}" method="post" class="logout-form">
+            {% else %}
+            <a class="nav-link" href="/orders">
+              Заказы  <span class="fa fa-id-card-o fa-lg"></span>
+            </a>
+            {% endif %}
+        </li>
+        <li class="nav-item">
+          
+            <form action="{% url 'logout' %}" method="post" class="logout-form nav-link">
               {%csrf_token%}
               <button 
               class="nav-link item-auth" 
               data-toggle="tooltip" 
               data-placement="bottom" 
               type="submit" 
-              title="Выйти из аккаунта">
-                <i class="fa fa-user-circle"></i>
+              title="Уверен?">
+                Выйти из аккаунта
               </button>
             </form>
-          </p>
-          {% else %}
-          <a class="nav-link item-auth " href="/login">Вход</a>
-          {% endif %}
-        </li>
+      </li>
+        
+
+        {% endif %}
       </ul>
     </div>
   </div>
 </nav>
+<script>
+  const button = document.getElementById('button-collapse')
+  // console.log(button)
+  position()
+  window.onresize = position
+
+  // console.log(offsetR)
+  function position(){
+    
+    var scr_w = screen.width
+    // console.log(scr_w)
+    var offsetL = button.offsetLeft
+
+    // console.log(offsetL)
+    var menu_pos = document.getElementById('my-nav')
+
+    // console.log()
+    menu_pos.style.right =  scr_w - offsetL - button.clientWidth +"px"
+
+    // console.log(menu_pos.style.right)
+  };
+</script>
 {%endblock%}
