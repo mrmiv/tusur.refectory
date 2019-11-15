@@ -13,28 +13,16 @@
       crossorigin="anonymous"
     />
     {% include "includes/links/links.html" %}
-    <link rel="stylesheet" href="{% static 'css/bjax.css' %}">
-    <style>
-      .active {
-        background: red;
-      }
-      .horizontal-nav {
-        position: fixed;
-        left:30%;
-        top: 100px;
-        background: white;
-        border: 1px solid black;
-        padding: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+
   </head>
   <body
     class="overflow"
     style="
-  display: table;
-  height: 100vh;
-  width: 100%;
-  position: relative;"
+    display: table;
+    height: 100vh;
+    width: 100%;
+    position: relative;"
   >
     {%include "includes/loader.html"%}
 
@@ -43,13 +31,13 @@
       {% include "includes/head.html" %}
 
       <div class="container">
-        <ul class="horizontal-nav trigger-victim list-inline">
-          {%for category in products.keys%}
-          <li class="list-inline-item"><a href="#category_{{forloop.counter}}" class="go_to">{{category}}</a></li>
+        <ul class="horizontal-nav list-inline">
+          {%for category in categories%}
+          <li class="list-inline-item category-item" data-category="{{forloop.counter}}"><a href="#{{category}}">{{category}}</a></li>
           {%endfor%}
         </ul>
       </div>
-
+<!-- 
       {%for key, value in products.items%}
       <div class="section" id='category_{{forloop.counter}}'>
           <h1>{{key}}</h1>
@@ -58,15 +46,42 @@
           {%endfor%}
       </div>
       {%endfor%}
+    </div> -->
+
+    <div class="all-products-block" style="padding: 20px 0;">
+      <div class="container">
+        <div class="row no-gutters">
+          {%for product in products %}
+              {% include "product.html" %}
+          {%endfor%}
+        </div>
+      </div>
     </div>
-
-<a class="category-link" data-category='soup' href="{% url 'category'%}">Супы ajax</a>
-
-
+  </div>
     {% include "includes/footer.html" %} 
     {% include "includes/links/scripts.html"%}
-
     <script>
+        var products = document.getElementsByClassName('add_product_form')
+        console.log($('[data-category-product]'))
+        $('.category-item').click(function () {
+          $(".active").removeClass("active"); 
+          $(this).addClass('active');
+          $(products).each(function(){
+            $(this).hide()
+          })
+          var category = $(this).attr('data-category')
+          $('[data-category-product]').each(function(){
+            if ($(this).attr('data-category-product')==category) {
+              // console.log('work')
+              $(this).fadeIn()
+            }
+          })
+          // console.log()
+          
+        });
+      </script>
+      <script src="{% static 'js/add_product_ajax.js' %}"></script>
+    <!-- <script>
       $(window).scroll(function() {
         $(".section").each(function() {
           if (
@@ -78,9 +93,7 @@
           }
         });
       });
-    </script>
+    </script> -->
 
-    <script src="{% static 'js/categories.js' %}"></script>
-    <script src="{% static 'js/add_product_ajax.js' %}"></script>
   </body>
 </html>

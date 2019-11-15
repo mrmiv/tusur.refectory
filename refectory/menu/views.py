@@ -6,27 +6,29 @@ from orders.models import order
 import json
 
 def index(request):
-    products = {
-        'Супы':product.objects.filter(category='1'),
-        'Гарниры':product.objects.filter(category='2'),
-        'Горячие блюда':product.objects.filter(category='3'),
-        'Салаты':product.objects.filter(category='4'),
-        'Завтраки':product.objects.filter(category='5'),
-        'Выпечка':product.objects.filter(category='6'),
-        'Дополнительно':product.objects.filter(category='7'),
-    }
-    # print(products)
-    context = {'page':'Меню', 'products': products}
-    return render(request, 'menu_page.html', context)
+    # products = {
+    #     'Супы':product.objects.filter(category='1'),
+    #     'Гарниры':product.objects.filter(category='2'),
+    #     'Горячие блюда':product.objects.filter(category='3'),
+    #     'Салаты':product.objects.filter(category='4'),
+    #     'Завтраки':product.objects.filter(category='5'),
+    #     'Выпечка':product.objects.filter(category='6'),
+    #     'Дополнительно':product.objects.filter(category='7'),
+    # }
 
-def category(request):
-    if request.is_ajax:
-        data = {'category': request.GET.get('category')}
-        json_dist = json.dumps(data)
-        dist = json.loads(json_dist)
-        return HttpResponse(json.dumps(data), content_type='application/json')
-    else:
-        raise Http404
+    products = product.objects.all
+    categories = [
+        'Супы',
+        'Гарниры',
+        'Горячие блюда',
+        'Салаты',
+        'Завтраки',
+        'Выпечка',
+        'Дополнительно'
+    ]
+    # print(products)
+    context = {'page':'Меню', 'products': products, 'categories':categories}
+    return render(request, 'menu_page.html', context)
 
 def add_product(request):
     if request.method == "POST" and request.is_ajax:

@@ -97,14 +97,13 @@
 
   // console.log(offsetR)
   function position(){
-    
-    var scr_w = screen.width
+    var scr_w = document.body.clientWidth
     // console.log(scr_w)
+    
     var offsetL = button.offsetLeft
-
     // console.log(offsetL)
-    var menu_pos = document.getElementById('my-nav')
 
+    var menu_pos = document.getElementById('my-nav')
     // console.log()
     menu_pos.style.right =  scr_w - offsetL - button.clientWidth +"px"
 

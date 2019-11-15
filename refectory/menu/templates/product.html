@@ -1,5 +1,5 @@
 {%block product%}
-<form method="POST" action="add_product" class="add_product_form">
+<form method="POST" action="add_product" class="add_product_form product col-6 col-md-4" data-category-product="{{product.category}}">
         {%csrf_token%}
         <h3>
             {{product.name}}
