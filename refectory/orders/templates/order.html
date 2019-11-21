@@ -1,0 +1,59 @@
+{%block order%}
+<div class="d-flex" style="    justify-content: space-between;">
+    <h6>
+        <strong>Номер заказа:</strong> {{order.id}}
+    </h6>
+{%if order.status_get and order.user == request.user%}
+<form 
+    class="refresh-order" 
+    action="{% url 'refresh' %}" 
+    method="post"
+    data-refresh-order="{{order.id}}">
+    {%csrf_token%}
+    <button type="submit" >
+        <i class="fa fa-refresh text-right" aria-hidden="true"></i>
+    </button>
+</form>
+{%endif%}
+
+</div>
+{%if user.is_staff%}
+<h6>
+    <strong>Пользователь:</strong> 
+    {{order.user.lastname}} {{order.user.firstname.0}}. 
+    {%if order.user.middlename%}
+        {{order.user.middlename}}.
+    {%endif%}
+</h6>
+{%endif%}
+<div>
+    <p>
+        <a data-toggle="collapse" href="#product-list_{{order.id}}" aria-expanded="false" aria-controls="product-list_{{order.id}}">
+            Товары заказа:
+        </a>
+    </p>
+    <div class="collapse" id="product-list_{{order.id}}">
+        <ul class="list-group">
+            {% for item in basket %}
+                {%if item.order == order%}
+                <li class="list-group-item product-in-order">
+                    {{item.product}} ({{item.product.price}} ₽)  {{item.quantity}} шт.
+                </li>
+                {%endif%}
+            {% endfor %}
+        </ul>        
+    </div>
+<div class="text-right">
+    <p>Общая стоимость: <strong>{{order.total_price}} ₽</strong></p>
+    {%if user.is_staff and not order.status_get %}
+        <a 
+        href=" {%url 'get_order' %}"
+        class="get_order_link"
+        style="color: green;"
+        data-order-to-get="{{order.id}}"
+        >Выдать</a>
+    {%endif%}
+</div>
+</div>
+
+{%endblock%}

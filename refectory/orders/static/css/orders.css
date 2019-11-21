@@ -1,0 +1,30 @@
+div.content>div.container{
+    padding: 20px 0px;
+}
+
+.order{
+    margin: 5px 0;
+    border-left: 1px solid #005BAA;
+    border-right: 1px solid #005BAA;
+    background: ghostwhite;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+li.product-in-order{
+    border: none;
+    padding: 8px;
+    margin: 0;
+    background: none;
+}
+
+form.refresh-order>button{
+    background: none;
+    border: none;
+    transition: 400ms;
+}
+
+form.refresh-order:hover>button{
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}

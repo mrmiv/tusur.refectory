@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Меню</title>
+    <title>Меню - ИнСтоловая</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -30,30 +30,39 @@
       {% include "includes/navbar.html" %} 
       {% include "includes/head.html" %}
 
-      <div class="container">
+      <!-- <div class="container">
         <ul class="horizontal-nav list-inline">
           {%for category in categories%}
           <li class="list-inline-item category-item" data-category="{{forloop.counter}}"><a href="#{{category}}">{{category}}</a></li>
           {%endfor%}
         </ul>
-      </div>
-<!-- 
-      {%for key, value in products.items%}
-      <div class="section" id='category_{{forloop.counter}}'>
-          <h1>{{key}}</h1>
-          {%for product in value %}
-            {% include "product.html" %}
-          {%endfor%}
-      </div>
-      {%endfor%}
-    </div> -->
+      </div> -->
 
-    <div class="all-products-block" style="padding: 20px 0;">
-      <div class="container">
-        <div class="row no-gutters">
-          {%for product in products %}
-              {% include "product.html" %}
-          {%endfor%}
+
+        
+
+    <div class="all-products-block">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-4">
+                <ul class="list-group list-category">
+                    <li class="list-group-item category-item active" data-category="all">
+                        <a>Все</a>
+                      </li>
+                    {%for category in categories%}
+                      <li class="list-group-item category-item" data-category="{{forloop.counter}}">
+                        <a href="#{{category}}">{{category}}</a>
+                      </li>
+                    {%endfor%}
+                  </ul>
+            </div>
+            <div class="col-md-10 col-8">
+                <div class="row">
+                    {%for product in products %}
+                        {% include "product.html" %}
+                    {%endfor%}
+                    </div>
+            </div>
         </div>
       </div>
     </div>
@@ -62,38 +71,36 @@
     {% include "includes/links/scripts.html"%}
     <script>
         var products = document.getElementsByClassName('add_product_form')
-        console.log($('[data-category-product]'))
+        // console.log($('[data-category-product]'))
         $('.category-item').click(function () {
           $(".active").removeClass("active"); 
           $(this).addClass('active');
-          $(products).each(function(){
-            $(this).hide()
-          })
-          var category = $(this).attr('data-category')
-          $('[data-category-product]').each(function(){
-            if ($(this).attr('data-category-product')==category) {
-              // console.log('work')
+          var attr = ($(this).attr('data-category'))
+
+          if (attr=='all'){
+
+            // console.log('true')
+            $(products).each(function(){
               $(this).fadeIn()
-            }
-          })
-          // console.log()
-          
+            })  
+
+          } else {
+            // console.log('false')
+            $(products).each(function(){
+              $(this).hide()
+            });
+
+            var category = $(this).attr('data-category')
+            $('[data-category-product').each(function(){
+              if ($(this).attr('data-category-product')==category){
+                // console.log(this)
+                $(this).fadeIn()
+              }
+            });
+
+          };
         });
       </script>
       <script src="{% static 'js/add_product_ajax.js' %}"></script>
-    <!-- <script>
-      $(window).scroll(function() {
-        $(".section").each(function() {
-          if (
-            $(this).offset().top-$(this).height()*0.5 < $(window).scrollTop()) {
-            var currentclass = $(this).attr("id");
-            // console.log(currentclass)
-            $(".active").removeClass("active");
-            $('a[href="#' + currentclass + '"]').addClass("active");
-          }
-        });
-      });
-    </script> -->
-
   </body>
 </html>

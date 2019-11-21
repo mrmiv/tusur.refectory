@@ -125,6 +125,11 @@ USE_L10N = True
 USE_TZ = True
 
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.yandex.ru' #Например, smtp.gmail.com
+# EMAIL_HOST_USER = '' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
+# EMAIL_HOST_PASSWORD = 'ВАШ_ПАРОЛЬ_НА_СЕРВЕРЕ'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 

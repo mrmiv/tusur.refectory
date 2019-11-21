@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import  Http404, HttpResponse
 from django.shortcuts import render, redirect
 from .models import product
-from orders.models import order
+from orders.models import order, basket
 import json
 
 def index(request):
@@ -24,7 +24,7 @@ def index(request):
         'Салаты',
         'Завтраки',
         'Выпечка',
-        'Дополнительно'
+        'Другое'
     ]
     # print(products)
     context = {'page':'Меню', 'products': products, 'categories':categories}
@@ -32,22 +32,37 @@ def index(request):
 
 def add_product(request):
     if request.method == "POST" and request.is_ajax:
-        data={'product_id': request.POST.get('product_id')}
+        data={
+            'product_id': request.POST.get('product_id'),
+            'product_quantity': request.POST.get('product_quantity')
+        }
         json_dist = json.dumps(data)
         # print(json_dist)
         dist = json.loads(json_dist)
         this_product = product.objects.get(id=int(dist['product_id']))
 
-        # print(this_product)
-        # orders = order.objects.filter(user=request.user, status_pay=False)
-        
-        # if not orders:
-        #     this_order = order.objects.create(user=request.user)
-        # else:
-        #     this_order = orders[0]
         this_order, created = order.objects.get_or_create(user=request.user, status_pay=False)
 
-        this_order.basket.add(this_product)
+        if basket.objects.filter(order=this_order, product=this_product):
+            # print('товар есть в корзине')
+            pib = basket.objects.filter(order=this_order).get(product=this_product) #product in basket
+            pib.quantity += int(dist['product_quantity'])
+            if pib.quantity >5:
+                print('true')
+                data['error']='В корзине не может быть больше пяти порций товара!'
+            else:
+                print('false')
+                pib.save()
+        else:
+            # print('товара нет в корзине')
+            this_order.products.add(this_product)
+            pib = basket.objects.filter(order=this_order).get(product=this_product) #product in basket
+            pib.quantity = int(dist['product_quantity'])
+            if pib.quantity >5:
+                data['error']='В корзине не может быть больше пяти порций товара!'
+            else:
+                pib.save()
+
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         raise Http404

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Заказы</title>
+    <title>Заказы - ИнСтоловая</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,6 +13,7 @@
       crossorigin="anonymous"
     />
     {% include "includes/links/links.html" %}
+    <link rel="stylesheet" href="{%static 'css/orders.css'%}">
   </head>
   <body class="overflow"
   style="
@@ -25,48 +26,44 @@
         {% include "includes/head.html" %} 
     
         <div class="container">
+
+          {%if orders_get%}
           <h2 class="text-center">Ожидаемые заказы</h2>
           <div class="row">
-            {%for order in orders%}
-              {%if order.status_get == False %}
-              <div class="col-3">
-                <h1>id: {{order.id}}</h1>
-                <h4>
-                  total_price: {{order.total_price}} <br>
-                  products:
-                </h4>
-                {% for product in order.basket.all %}
-                  <p>{{product.name}}</p>
-                {% endfor %}
+            {%for order in orders_get %}
+              <div class="col-12 order">
+                {%include 'order.html'%}
               </div>
-              {%endif%}
             {%endfor%}
           </div>
+          {%endif%}
+
+          {%if orders_get and orders_gotten%}
+            <hr>
+          {%endif%}
           
-          <hr>
+          {%if orders_gotten %}
           <h2 class="text-center">Выданные заказы</h2>
-    
           <div class="row">
-            {%for order in orders%}
-              {%if order.status_get == True %}
-              <div class="col-3">
-                <h1>id: {{order.id}}</h1>
-                <h4>
-                  total_price: {{order.total_price}} <br>
-                  products:
-                </h4>
-                {% for product in order.basket.all %}
-                  <p>{{product.name}}</p>
-                {% endfor %}
+            {%for order in orders_gotten %}
+              <div class="col-12 order">
+                {%include 'order.html'%}
               </div>
-              {%endif%}
             {%endfor%}
           </div>
+          {%endif%}
+
+          {%if not orders_gotten and not orders_get%}
+            <h2 class="text-center">У вас нет заказов</h2>
+            <h3 class="text-center"><a href='/menu'>Сделайте свой первый заказ</a></h3>
+          {%endif%}
         </div>
     </div>
 
     {% include "includes/footer.html" %} 
 
     {%include "includes/links/scripts.html"%}
+    <script src="{%static 'js/get_order.js'%}"></script>
+    <script src="{% static 'js/refresh.js' %}"></script>
   </body>
 </html>

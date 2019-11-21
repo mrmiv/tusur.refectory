@@ -1,36 +1,88 @@
-.horizontal-nav {
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    /* right: 0; */
-    top: 25%;
-    /* margin: 0 auto; */
-    /* background: white;
-    border: 1px solid black; */
-    padding: 5px;
-    width: fit-content;
-    z-index: 4;
-  }
-  .list-inline-item.category-item{
-    padding: 5px 15px;
-    box-shadow: 0 0 5px -1px black;
-    margin: 5px;
+li.list-group-item.category-item{
+    padding: 10px;
     background: white;
     transition: 250ms;
     cursor: pointer;
     border-radius: 3px;
-  }
-  .list-inline-item.category-item>a{
+}
+li.list-group-item.category-item>a{
     font-size: 16px;
     color: black;
     text-decoration: none;
-  }
-  li.list-inline-item.category-item.active{
+}
+li.list-group-item.category-item.active{
     background: #c8dc53;
-  }
-  li.list-inline-item.category-item:hover{
+    border-color: #6b7532;
+}
+li.list-group-item.category-item:hover{
+    background: #ddee7e;
+}
+li.list-group-item.category-item.active:hover{
     background: #c8dc53;
+}  
+
+/* product */
+.product{
+  padding: 2px;
+  text-align: center;
+}
+
+form.product>h6{
+  font-size: 16px;
+}
+
+p.description{
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+form.product>button{
+  border: none;
+  border-radius: 50%;
+  box-sizing: border-box;
+  /* padding: 0; */
+  background: #c8dc53;
+  width: 30px;
+  height: 30px;
+}
+
+form.product>button:focus{
+  outline: none;
+}
+
+@media screen and (max-width:576px){
+  li.list-group-item.category-item{
+    padding: 5px;
   }
-  li.list-inline-item.category-item.active:hover{
-    background: #9eaf40;
+  li.list-group-item.category-item>a, 
+  form.product>p.description {
+    font-size: 12x;
   }
+  form.product>h6{
+    font-size: 14px;
+  }
+}
+
+/* animation */
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  animation-duration: 300ms;
+}

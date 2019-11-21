@@ -1,5 +1,13 @@
 from django.contrib import admin
+from .models import order, basket
 
-from .models import order
+class inline_basket(admin.StackedInline):
+    model = order.products.through
 
-admin.site.register(order)
+class basketadmin(admin.ModelAdmin):
+    inlines = (inline_basket, )
+
+admin.site.register(order, basketadmin)
+
+# admin.site.register(order)
+# admin.site.register(basket)

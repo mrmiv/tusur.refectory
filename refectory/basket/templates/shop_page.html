@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Корзина</title>
+    <title>Корзина - ИнСтоловая</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,6 +13,7 @@
       crossorigin="anonymous"
     />
     {% include "includes/links/links.html" %} 
+    <link rel="stylesheet" href="{%static 'css/basket.css'%}">
   </head>
   <body class="overflow"
   style="
@@ -23,47 +24,39 @@
     <div class="content">
         {% include "includes/navbar.html" %} 
         {% include "includes/head.html" %} 
-            <div class="container" style="height: 57vh;" id='#content'>
+            <div class="container basket" style="height: 57vh;" id='#content'>
                 <form action="pay" method="POST" class="order_in_basket">
                   {%csrf_token%}
                   <div class="row">
-                    
-                    {% for order in basket%}
-                      <div class="col-md-4 col-12">
-                        <h3>Заказ №{{order.id}}</h3>
-                        <h4>Продукты:</h4>
-                        <ul class="user_basket">
-                          {%for product in order.basket.all%}
-                            <li data-product_li="{{product.id}}">
-                              <h5>
-                                  {{product.name}} - {{product.price}} -
-                                  <a class="delete_product" data-product_id='{{product.id}}' href="{% url 'delete' %}">
-                                    delete
-                                      <i class="fa fas fa-trash"></i>
-                                  </a>
-                              </h5>
-                            </li>
+                    {% if order %}
+                      <div class="col-12 basket">
+                        <!-- <h3>Заказ №{{order.id}}</h3> -->
+                        <!-- <h4>Продукты:</h4> -->
+                        <ul class="user_basket list-group">
+                          {%for item in basket_items%}
+                            {% include 'basket_product.html'%}
                           {%endfor%}
                         </ul>
                       </div>
-                    {%endfor%}
+                      <div class="col-12 text-right" style="margin-top: 10px;">
+                          <h5>Общая стоимость : <strong class='total_price'>{{order.total_price}} ₽</strong>
+                            <button class="btn btn-success" type="submit">Оплатить</button>
+                          </h5>
+                      </div>
                   </div>
-                  {%if basket%}
-                    <h3>Total price = {{basket.0.total_price}}</h3>
-                    <button class="btn btn-success" type="submit">
-                      <H1>PAY</H1>
-                    </button>
                   </form>
-                  {%else%}
-                  <h1 class="text-center">Корзина пустая</h1>
-                  <h4 class="text-center">Закажите блюдо в <a href="/menu">меню</a> </h4>
-                  {%endif%}
-                  
-                </div>
+                    {% else %}
+                      <div class="container text-center">
+                        <h1 >Корзина пустая</h1>
+                        <h4 >Закажите блюдо в <a href="/menu">меню</a> </h4>
+                      </div>
+                    {%endif%}
+                  </div>
     </div>
 
     {% include "includes/footer.html" %}
     {%include "includes/links/scripts.html"%}
     <script src="{% static 'js/delete_product_ajax.js' %}"></script>
+    <!-- <script src="{% static 'js/change_product.js' %}"></script> -->
   </body>
 </html>

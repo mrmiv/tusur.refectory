@@ -7,4 +7,3 @@ db.sqlite3
 .DS_Store
 refectory/refectory/settings.py
 refectory/updates.txt
-refectory/general/templates/includes/navbar_old.html

@@ -1,0 +1,20 @@
+form.order_in_basket>div.row>div.basket{
+    margin: 5px 0;
+    padding: 10px;
+    border-left: 1px solid #005BAA;
+    border-right: 1px solid #005BAA;
+    background: ghostwhite;
+}
+
+li.product-in-basket{
+    border: none;
+    margin: 5px 0px !important;
+    padding: 8px;
+    margin: 0;
+    background: none;
+    transition: 300ms;
+}
+
+li.product-in-basket:hover{
+    background: rgb(217, 217, 255);
+}

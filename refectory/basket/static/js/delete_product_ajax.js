@@ -12,12 +12,17 @@ $('.delete_product').on('click',function(e){
             product_id
             },
         success: function(data){
-            console.log('it worked');
+            console.log(data)
+            // console.log('it worked');
             // console.log($('li[data-product_li ='+ product_id+']'))
             $('li[data-product_li ='+product_id+']').remove()
+            var price = ''+data.total_price
+            $('strong.total_price').html(price)
             if (data.empty) {
                 $('.order_in_basket').remove()
-                $("#content").load();  
+                var empty_basket_html = "<div class="+"'container text-center'"+"><h1 >Корзина пустая</h1><h4 >Закажите блюдо в <a href="+"'/menu'"+">меню</a> </h4></div>"
+                // console.log(empty_basket_html);
+                $('div.container.basket').html(empty_basket_html);
             }
             // если получить обратно data, то можно добавить условие, при котором удалится блок заказа
         },

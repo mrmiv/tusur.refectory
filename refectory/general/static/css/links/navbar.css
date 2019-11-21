@@ -3,6 +3,14 @@ body{
     width: 100%;
 }
 
+h1,h2,h3,h4,h5,h6,p,button{
+    user-select: none;
+}
+
+nav.navbar{
+    padding: 5px 8px !important;
+}
+
 .overflow{
     overflow:hidden;
 }
@@ -71,6 +79,10 @@ button.nav-link.item-auth{
     color: white;
 }
 
+button>span.navbar-toggler-icon:focus{
+    outline: none;
+}
+
 .collapse-ul{
     position: absolute;
     top:100%;
@@ -111,5 +123,11 @@ a.nav-link.active{
     }
     .img-logo{
         height: 18px;
+    }
+}
+
+@media screen and (max-width:576px){
+    a.item-auth{
+        font-size: 12px;
     }
 }

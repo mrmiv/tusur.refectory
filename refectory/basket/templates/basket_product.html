@@ -1,0 +1,21 @@
+{% block basket_product%}
+
+<li class="list-group-item product-in-basket" data-product_li="{{item.product.id}}">
+    <h6 style="text-align-last: justify;">
+        {{item.product}} 
+        <a 
+        class="delete_product" 
+        data-product_id='{{item.product.id}}' 
+        href="{% url 'delete' %}"
+        style="color: red;">
+          <i class="fa fas fa-trash"></i>
+        </a>
+    </h6>
+    <p style="margin: 0;">
+      Цена : {{item.product.price}} ₽
+      <br>
+      Количество : <span class="quantity-area" data-quantity="{{item.order.id}}">{{item.quantity}}</span>шт.
+    </p>
+</li>
+
+{%endblock%}

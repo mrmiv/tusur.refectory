@@ -1,10 +1,10 @@
 .head-img{
     max-width: 100%;
     height: auto;
-    
+    width: 450px;
 }
 .head-img-div{
-    width: 500px;
+    max-width: 95%;
     /* position: absolute; */
     margin-top: -20%;
     z-index: -5;
@@ -24,18 +24,18 @@
 
 @media screen and (max-width:1199px){
     .head-img-div{
-        margin-top: -25%;
+        margin-top: -23%;
     }
 }
 
 @media screen and (max-width:991px){
     .head-img-div{
-        margin-top: -35%;
+        margin-top: -33%;
     }
 }
 
 @media screen and (max-width:767px){
     .head-img-div{
-        margin-top: -45%;
+        margin-top: -40%;
     }
 }
