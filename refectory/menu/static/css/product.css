@@ -1,0 +1,75 @@
+.add_product_form{
+    padding:0  15px;
+}
+
+.card-product{
+    padding: 10px;
+    width: 200px;
+    height: 255px;
+    background: rgb(213,255,171);
+    background: -moz-linear-gradient(180deg, rgba(213,255,171,1) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(213,255,171,1) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(180deg, rgba(213,255,171,1) 0%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d5ffab",endColorstr="#ffffff",GradientType=1);
+    text-align: center;
+    margin: 15px auto;
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px 0 rgba(0,100,0,0.35);
+    transition: 150ms;
+}
+
+.card-product:hover{
+    box-shadow: 2px 5px 12px 0 rgba(0,100,0,0.3);
+}
+
+.description{
+    max-height: 90px;
+    height: 100%;
+    margin-bottom: 5px;
+}
+
+.description>h4{
+    font-size: 16px;
+    font-family: 'Alegreya Sans SC medium', sans-serif;
+}
+
+.description>p{
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+  
+.btn-add-product{
+    box-shadow: 0 4px 4px 0;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+    transition: 200ms;
+    
+}
+
+.btn-add-product[data-in-basket="0"]{
+    background: #1DA643;
+}
+
+.btn-add-product[data-in-basket="1"]{
+    background: #fa983a;
+}
+
+button.btn-add-product:focus{
+    outline: none;
+}
+
+button.btn-add-product:active{
+    background: rgb(14, 107, 40);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.4);
+}
+
+@media screen and (max-width:596px){
+
+}

@@ -1,19 +1,43 @@
 {%block product%}
-<form method="POST" action="add_product" class="add_product_form product col-6 col-md-4" data-category-product="{{product.category}}">
+<form method="POST" action="add_product" class="add_product_form col-auto mx-auto" data-category-product="{{product.category}}">
    {%csrf_token%}
-   <h6>
-       <ins>{{product.name}}</ins>
-   </h6>
-   <p class="description">
-      {%if product.description%}
-      Описание: {{product.description}}
-      <br>
+   <div class="card-product">
+      <div class="img-product" style="width: 100px; height: 100px; background: white; margin: 5px auto; border-radius: 50%;">
+         <img src="" alt="">
+      </div>
+      <div class="description">
+         <h4 >{{product.name}}</h4>
+         {%if product.description%}
+         <p >Состав: {{product.description}}</p>
+         {%endif%}
+         <p >Цена: {{product.price}} ₽</p>
+      </div>
+      <!-- кнопка если в корзине -->
+      {%if user.is_authenticated%}
+         {%if product in basket %}
+         <button 
+         class="btn-add-product"  
+         data-in-basket="1"
+         type="submit" 
+         data-id={{product.id}}>
+         <span class="button-val">Добавлено в корзину!</span>
+         <span class="spinner-border spinner-border-sm" style="display:none" role="status" aria-hidden="true"></span>
+         </button>
+         
+         <!-- кнопка если НЕ в корзине -->
+         {% else %}
+         <button 
+         class="btn-add-product"  
+         data-in-basket="0"
+         type="submit" 
+         data-id={{product.id}}>
+         <span class="button-val">Добавить в корзину</span>
+         <span class="spinner-border spinner-border-sm" style="display:none" role="status" aria-hidden="true"></span>
+         </button>
+         {%endif%}
       {%endif%}
-      Цена: {{product.price}} ₽
-   </p>
-   {%if user.is_authenticated %}
-      <input type="number" name="count" min="1" max="5" value="1"  class="quantity-input">
-      <button class="animated btn-add-product" type="submit" data-id={{product.id}}> + </button>
-   {%endif%}
+
+   </div>
+   
 </form>
 {%endblock%}

@@ -24,7 +24,7 @@
     <div class="content">
         {% include "includes/navbar.html" %} 
         {% include "includes/head.html" %} 
-            <div class="container basket" style="height: 57vh;" id='#content'>
+            <div class="container basket" id='#content'>
                 <form action="pay" method="POST" class="order_in_basket">
                   {%csrf_token%}
                   <div class="row">

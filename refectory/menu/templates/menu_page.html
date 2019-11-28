@@ -14,7 +14,7 @@
     />
     {% include "includes/links/links.html" %}
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
   </head>
   <body
     class="overflow"
@@ -25,82 +25,69 @@
     position: relative;"
   >
     {%include "includes/loader.html"%}
-
+    <div class="categories">
+        <div class="content-list">
+            <ul class="list-category">
+                <li class="category-item active" data-category="all">
+                    <img src="{%static 'svg/Arrow.svg'%}"><a href="#">Все</a>
+                </li>
+                {%for category in categories%}
+                <li class="category-item" data-category="{{forloop.counter}}">
+                    <img src="{%static 'svg/Arrow.svg'%}"><a href="#{{category}}">{{category}}</a>
+                </li>
+                {%endfor%}
+              </ul>
+        </div>
+    </div>
+    <div class="fixed-button button-categories"><a id="button-categories">
+      <img 
+      src="{%static 'svg/categories-menu.png'%}" 
+      alt="Категории">     
+    </a></div>
+    {%if basket%}
+    <div class="fixed-button button-basket"><a href="/basket" id="button-basket">
+      <img 
+      src="{%static 'svg/basket.png'%}" 
+      alt="Корзина">     
+    </a></div>
+    {%else%}
+    <div class="fixed-button button-basket disp-none"><a href="/basket" id="button-basket">
+      <img 
+      src="{%static 'svg/basket.png'%}" 
+      alt="Корзина">     
+    </a></div>
+    {%endif%}
+    
     <div class="content">
       {% include "includes/navbar.html" %} 
       {% include "includes/head.html" %}
 
-      <!-- <div class="container">
-        <ul class="horizontal-nav list-inline">
-          {%for category in categories%}
-          <li class="list-inline-item category-item" data-category="{{forloop.counter}}"><a href="#{{category}}">{{category}}</a></li>
-          {%endfor%}
-        </ul>
-      </div> -->
-
-
-        
+      <!-- <div class="col-md-2 col-4">
+        <ul class="list-group list-category">
+            <li class="list-group-item category-item active" data-category="all">
+                <a>Все</a>
+              </li>
+            {%for category in categories%}
+              <li class="list-group-item category-item" data-category="{{forloop.counter}}">
+                <a href="#{{category}}">{{category}}</a>
+              </li>
+            {%endfor%}
+          </ul>
+    </div> -->
 
     <div class="all-products-block">
       <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2 col-4">
-                <ul class="list-group list-category">
-                    <li class="list-group-item category-item active" data-category="all">
-                        <a>Все</a>
-                      </li>
-                    {%for category in categories%}
-                      <li class="list-group-item category-item" data-category="{{forloop.counter}}">
-                        <a href="#{{category}}">{{category}}</a>
-                      </li>
-                    {%endfor%}
-                  </ul>
-            </div>
-            <div class="col-md-10 col-8">
-                <div class="row">
-                    {%for product in products %}
-                        {% include "product.html" %}
-                    {%endfor%}
-                    </div>
-            </div>
+        <div class="row justify-content-start">
+          {%for product in products %}
+              {% include "product.html" %}
+          {%endfor%}
         </div>
       </div>
     </div>
   </div>
     {% include "includes/footer.html" %} 
     {% include "includes/links/scripts.html"%}
-    <script>
-        var products = document.getElementsByClassName('add_product_form')
-        // console.log($('[data-category-product]'))
-        $('.category-item').click(function () {
-          $(".active").removeClass("active"); 
-          $(this).addClass('active');
-          var attr = ($(this).attr('data-category'))
-
-          if (attr=='all'){
-
-            // console.log('true')
-            $(products).each(function(){
-              $(this).fadeIn()
-            })  
-
-          } else {
-            // console.log('false')
-            $(products).each(function(){
-              $(this).hide()
-            });
-
-            var category = $(this).attr('data-category')
-            $('[data-category-product').each(function(){
-              if ($(this).attr('data-category-product')==category){
-                // console.log(this)
-                $(this).fadeIn()
-              }
-            });
-
-          };
-        });
-      </script>
-      <script src="{% static 'js/add_product_ajax.js' %}"></script>
+    <script src="{% static 'js/category-menu.js' %}"></script>
+    <script src="{% static 'js/add_product_ajax.js' %}"></script>
   </body>
 </html>

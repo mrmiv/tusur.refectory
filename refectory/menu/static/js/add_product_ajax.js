@@ -1,39 +1,98 @@
-    $('.add_product_form').on('submit',function(e){
-        // console.log('helo')
-        var product_id = $(this).find("button[type=submit]").attr('data-id');
-        var product_quantity = $(this).find("input.quantity-input").val();
-        // console.log(product_quantity)
-        // console.log(product_id)
-        var button = $(this).find("button[type=submit]")
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: $('.add_product_form').attr('action'),
-            dataType: 'json',
-            data: {
-                product_id,
-                product_quantity
-                },
-            success: function(data){
-                
-                // console.log(data.error)
+$('.add_product_form').on('submit',function(e){
+    // console.log('helo')
 
-                if (data.error){
-                    alert(data.error)
-                } else {
-                    button.addClass('pulse')
-                    setTimeout(function(){
-                        button.removeClass("pulse");
-                    }, 300);
-                }
-                
-                // $('ul.allusers').append('<li> user: '+data['name']+'<br> email: '+ data['email']+'</li>')
+    function loading(data) {
+        // пропадаед надпись
+        // console.log(typeof(span.attr('data-in-basket')))
+        $('.button-basket').fadeIn()
+        span.fadeOut(function () {
+            // если есть ошибка, возвращает ошибку в текст,
+            if (data.error){
+                setTimeout(function() {
+                    span.html(String(data.error))
+                }, 600);
+            // если нет ошибки, возвращает успех
+            } else {
+                    if(button.attr("data-in-basket")=="0"){
+                        // console.log('true worked - добавлено в корзину')
+                        setTimeout(function() {
+                            span.html("Добавлено в корзину!");
+                            button.attr("data-in-basket","1")
+                        }, 600);
+
+                    }else{
+                        // console.log('false worked')
+                        setTimeout(function() {
+                            span.html("Добавить в корзину")
+                            button.attr("data-in-basket","0")
+                        }, 600);
+                        
+                    };
+                };
+            })
+        // появляется кольцо загрузки
+        button.find("span.spinner-border").delay(300).fadeIn()
+    }
+
+    var product_id = $(this).find("button[type=submit]").attr('data-id');
+    // var in_basket = $(this).find("button[type=submit] span").attr('data-in-basket') 
+    // console.log(in_basket)
+    var button = $(this).find("button[type=submit]")
+    var span = button.find("span.button-val")
+    // console.log(button.html())
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: $('.add_product_form').attr('action'),
+        dataType: 'json',
+        data: {
+            product_id,
+            // in_basket
             },
-            error: function(){
-                console.log('error')
-            }
-        });
+        success: function(data){
+            console.log(data.error)
+            // появляется загрузка и обновляется текст
+            loading(data)
+            console.log('ok')
+
+            // пропадает загрузка 
+            button.find("span.spinner-border").fadeOut(function () {
+                // если есть ошибка, меняет цвет кнопки и возвращает через 2с в исходное состояние
+                if (data.error){
+                    button.css('background', "#811212")
+                    setTimeout(function() {
+                        if(button.attr("data-in-basket")!=="0"){
+                            // console.log('true worked - добавлено в корзину')
+                            span.html("Добавлено в корзину!");
+                            button.css('background',"#fa983a")
+                        }else{
+                            // console.log('false worked')
+                            span.html("Добавить в корзину")
+                            button.css('background',"#1DA643")
+                        };
+                    },1500)
+                }
+                // если ошибки нет, выводит текст
+                else{
+                    span.fadeIn()
+                }
+                span.fadeIn()
+            });
+        },
+
+        error: function(data){
+            loading(data)
+            button.find("span.spinner-border").delay(7000).fadeOut(function () {
+                button.css('background', "#811212")
+                
+                span.html("Что-то пошло не так :(")
+                span.fadeIn()
+            });
+
+            console.log('error')
+        }
     });
+});
 
     function getCookie(name) {
         var cookieValue = null;
