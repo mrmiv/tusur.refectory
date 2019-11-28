@@ -8,7 +8,7 @@
         <div class="d-flex">
             {% if user.is_authenticated %}
             <p class="user-block">
-              <a  class="item-auth">{{user.firstname}} {{user.lastname.0}}. 
+              <a  class="item-auth">{{user.lastname}} {{user.firsname.0}}. 
               {% if user.middlename %}
               {{user.middlename.0}}.
               {%endif%}

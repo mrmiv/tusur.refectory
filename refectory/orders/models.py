@@ -8,7 +8,7 @@ from django.dispatch import receiver
 
 class order(models.Model):
 
-    total_price = models.DecimalField(decimal_places=2, max_digits=5, default=0)
+    total_price = models.DecimalField(decimal_places=2, max_digits=8, default=0)
     status_pay = models.BooleanField(default=False)
     status_get = models.BooleanField(default=False) 
     user = models.ForeignKey(user, on_delete=models.CASCADE)
