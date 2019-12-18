@@ -1,19 +1,19 @@
-$('').on('click',function(e){
-    // console.log('helo')
-    // var product_id = $(this).attr('data-product_id');
-
+$('a[data-q-minus]').on('click',function(e){
+    // console.log($(this).attr('data-q-minus'));
+    var product_id = $('li.product-in-basket[data-product-li = '+$(this).attr('data-q-minus')+']');
     // console.log(product_id)
-    e.preventDefault();
+
+    e.preventDefault(); 
     $.ajax({
         type: "POST",
-        url: '',
+        url: $(this).attr('href'),
         dataType: 'json',
         data: {
-            // product_id
+            product_id 
             },
-        success: function(data){
+        success: function(){
             // console.log(data)
-            // console.log('it worked');
+            console.log('it worked');
             // console.log($('li[data-product_li ='+ product_id+']'))
             // если получить обратно data, то можно добавить условие, при котором удалится блок заказа
         },

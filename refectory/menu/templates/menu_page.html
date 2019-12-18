@@ -25,20 +25,6 @@
     position: relative;"
   >
     {%include "includes/loader.html"%}
-    <div class="categories">
-        <div class="content-list">
-            <ul class="list-category">
-                <li class="category-item active" data-category="all">
-                    <img src="{%static 'svg/Arrow.svg'%}"><a href="#">Все</a>
-                </li>
-                {%for category in categories%}
-                <li class="category-item" data-category="{{forloop.counter}}">
-                    <img src="{%static 'svg/Arrow.svg'%}"><a href="#{{category}}">{{category}}</a>
-                </li>
-                {%endfor%}
-              </ul>
-        </div>
-    </div>
     <div class="fixed-button button-categories"><a id="button-categories">
       <img 
       src="{%static 'svg/categories-menu.png'%}" 
@@ -60,6 +46,20 @@
     
     <div class="content">
       {% include "includes/navbar.html" %} 
+      <div class="categories">
+          <div class="content-list">
+              <ul class="list-category">
+                  <li class="category-item active" data-category="all">
+                      <img src="{%static 'svg/Arrow.svg'%}"><a href="#">Все</a>
+                  </li>
+                  {%for category in categories%}
+                  <li class="category-item" data-category="{{forloop.counter}}">
+                      <img src="{%static 'svg/Arrow.svg'%}"><a href="#{{category}}">{{category}}</a>
+                  </li>
+                  {%endfor%}
+                </ul>
+          </div>
+      </div>
       {% include "includes/head.html" %}
 
       <!-- <div class="col-md-2 col-4">
@@ -74,7 +74,13 @@
             {%endfor%}
           </ul>
     </div> -->
-
+    
+    <!-- SEARCH -->
+    
+    <!-- <div id="search">
+      <input type="text" placeholder="Поиск товаров">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div> -->
     <div class="all-products-block">
       <div class="container-fluid">
         <div class="row justify-content-start">

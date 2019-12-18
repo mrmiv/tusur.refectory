@@ -33,12 +33,14 @@
                         <!-- <h3>Заказ №{{order.id}}</h3> -->
                         <!-- <h4>Продукты:</h4> -->
                         <ul class="user_basket list-group">
-                          {%for item in basket_items%}
-                            {% include 'basket_product.html'%}
+                        <div class="row">
+                            {%for item in basket_items%}
+                              {% include 'basket_product.html'%}
                           {%endfor%}
+                        </div>
                         </ul>
                       </div>
-                      <div class="col-12 text-right" style="margin-top: 10px;">
+                      <div class="col-12 text-center" style="margin-top: 10px;">
                           <h5>Общая стоимость : <strong class='total_price'>{{order.total_price}} ₽</strong>
                             <button class="btn btn-success" type="submit">Оплатить</button>
                           </h5>
@@ -53,10 +55,10 @@
                     {%endif%}
                   </div>
     </div>
-
+  </div>
     {% include "includes/footer.html" %}
     {%include "includes/links/scripts.html"%}
     <script src="{% static 'js/delete_product_ajax.js' %}"></script>
-    <!-- <script src="{% static 'js/change_product.js' %}"></script> -->
+    <script src="{% static 'js/change_product.js' %}"></script>
   </body>
 </html>

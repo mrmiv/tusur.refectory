@@ -1,6 +1,6 @@
 {% block basket_product%}
 
-<li class="list-group-item product-in-basket" data-product_li="{{item.product.id}}">
+<!-- <li class="list-group-item product-in-basket" data-product_li="{{item.product.id}}">
    
   <div class="d-flex" style="justify-content: space-between;">
     <h6>{{item.product}}</h6>
@@ -18,6 +18,48 @@
       <br>
       Количество : <span class="quantity-area" data-quantity="{{item.order.id}}">{{item.quantity}}</span>шт.
     </p>
+</li> -->
+
+<div class="col-md-6 col-12 " data-product-li="{{item.product.id}}">
+
+  <li class="list-group-item product-in-basket d-flex ">
+    
+    <div class="content-item" style="width: 100%; display: flex;">
+      <div class="image-item" style="background: orange; border-radius: 50%; width: 100px; height: 100px;">
+      </div>
+      <div class="text-item">
+        <h6>{{item.product}}</h6>
+        <p style="margin: 0;">
+          Состав: 
+          <br>
+          Цена : <span class="price" data-price-product="price_of_{{item.product.id}}">{{item.product.price}}</span> ₽
+          <br>
+          Количество : 
+          <!-- {%if item.quantity != 1%}
+          <a href="{% url 'remove' %}" data-q-minus="{{item.product.id}}">
+            <i class="fa fa-minus" style="color: red;" aria-hidden="true"></i>
+          </a>
+          {%endif%} -->
+          <span class="quantity-area" data-quantity="{{item.order.id}}">{{item.quantity}}</span>шт.
+          <!-- {%if item.quantity < 5%}
+          <a href="{% url 'add' %}" data-q-plus="{{item.product.id}}">
+            <i class="fa fa-plus" style="color: green;" aria-hidden="true"></i>
+          </a>
+          {%endif%} -->
+        </p>
+      </div>
+    </div>
+    <div style="text-align: right;">
+      <a 
+        class="delete_product" 
+        data-product_id='{{item.product.id}}' 
+        href="{% url 'delete' %}"
+        style="color: red;">
+        <i class="fa fas fa-trash"></i>
+      </a>
+    </div>
+
 </li>
 
+</div>
 {%endblock%}

@@ -60,3 +60,31 @@ def delete_product(request):
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
         raise Http404
+
+def remove_product(request):
+    if request.method == "POST" and request.is_ajax():
+        data={'product_id': request.POST.get('product_id')}
+        dist = json.loads(json.dumps(data))
+
+        this_product = product.objects.get(id=int(dist['product_id']))
+        this_order = order.objects.get(user=request.user, status_pay=False)
+
+        try:
+            pib = basket.objects.get(order=this_order, product=this_product)
+            pib.quantity -= 1
+            print('нашли товар и его кол-во теперь ',pib.quantity)
+        except:
+            print('товара нет или количество меньше 0')
+            print(pib.quantity)
+        finally:
+            pib.save()
+
+        return HttpResponse(json.dumps(data), content_type='application/json')
+    else:
+        raise Http404
+
+def add_product(request):
+    if request.method == "POST" and request.is_ajax():
+        pass
+    else:
+        raise Http404

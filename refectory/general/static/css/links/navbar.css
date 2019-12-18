@@ -56,7 +56,7 @@ a.item-auth{
     color: #005baa; 
     background-color: #fff;
     padding: 5px 12px;
-    cursor: context-menu;
+    cursor: pointer;
     margin: auto;
 }
 

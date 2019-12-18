@@ -10,12 +10,12 @@ $('.delete_product').on('click',function(e){
         dataType: 'json',
         data: {
             product_id
-            },
+            }, 
         success: function(data){
             console.log(data)
             // console.log('it worked');
             // console.log($('li[data-product_li ='+ product_id+']'))
-            $('li[data-product_li ='+product_id+']').remove()
+            $('div[data-product-li ='+product_id+']').remove()
             var price = ''+data.total_price
             $('strong.total_price').html(price)
             if (data.empty) {

@@ -1,20 +1,26 @@
 form.order_in_basket>div.row>div.basket{
     margin: 5px 0;
     padding: 10px;
-    border-left: 1px solid #005BAA;
-    border-right: 1px solid #005BAA;
-    background: ghostwhite;
 }
 
 li.product-in-basket{
     border: none;
-    margin: 5px 0px !important;
-    padding: 8px;
+    border-radius: 10px !important;
+    margin: 8px 0px !important;
     margin: 0;
-    background: none;
-    transition: 300ms;
+    transition: 200ms;
+    background: linear-gradient(to bottom, #F5FFBA, white );
+    box-shadow: -3px 3px 5px 0 rgb(0, 0, 0, 0.1);
 }
 
-li.product-in-basket:hover{
-    background: rgb(217, 217, 255);
+.content-item{
+    padding: 10px 0;
+}
+
+.text-item{
+    padding-left: 10px;
+}
+
+.text-item>h6,a.delete_product{
+    font-size: 18px;
 }

@@ -59,6 +59,7 @@ li.list-group-item.category-item.active:hover{
   border: none;
   box-shadow: 0 5px 5px 0 rgb(0,0,0,0.35);
   transition: 200ms;
+  cursor: pointer;
 }
 
 #button-basket{
@@ -87,7 +88,7 @@ li.list-group-item.category-item.active:hover{
   background: #014077;
 }
 
-a>img{
+.fixed-button>a>img{
   width: 60%;
   margin: 10px auto;
   display: block;
@@ -146,4 +147,37 @@ ul.list-category>li.category-item>a{
   text-decoration: none;
   color: white;
   transition: 200ms;
+}
+
+/* search */
+#search{
+  z-index: 30;
+  position: absolute;
+  transform: translate(-115%,0);
+  left: 100%;
+  top: 160px;
+  display: inline-table;
+  border-radius: 25px;
+  background: white;
+  border: 1px solid #005bAA;
+}
+
+#search>input{
+  border: none;
+  background: none;
+  border-radius: 0;
+  padding: 5px 10px;
+}
+
+#search>i{
+  padding: 5px;
+  margin-right: 5px;
+  color:#005bAA;
+}
+
+@media screen and (max-width:767px){
+  #search{
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

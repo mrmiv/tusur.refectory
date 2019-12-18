@@ -35,15 +35,11 @@
         <div class="bg-images">
           <div class="container-fluid">
             <div class="row justify-content-center">
+              <!-- +animated -->
               <div 
               class="
               block-img 
-              first-img  
-              animated 
-              "
-              style="
-              animation-duration: 1.5s;
-              animation-delay:0.5s;
+              first-img
               "
               >
                 <img class="food" src="{% static 'img/dishes/dish-1.png' %}" />
@@ -65,7 +61,8 @@
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="block-img second-img animated"
+              <!-- +animated -->
+              <div class="block-img second-img"
               style="
               margin-top: -35px;
               z-index: -1;">
@@ -78,17 +75,20 @@
           <div class="container">
             <div class="row">
               <div class="col-4 coloumn">
-                <div class="block-text-info mx-auto animated" style="animation-delay: 0.1s;">
+                <!-- +animated -->
+                <div class="block-text-info mx-auto" style="animation-delay: 0.1s;">
                   <p class="info-text">Заходи в меню и выбирай блюдо</p>   
                 </div> 
               </div>
               <div class="col-4 coloumn">
-                <div class="block-text-info mx-auto animated"  style="animation-delay: 0.2s;">
+                <!-- +animated -->
+                <div class="block-text-info mx-auto"  style="animation-delay: 0.2s;">
                     <p class="info-text">Добавляй блюдо в корзину и указывай время, когда заберешь заказ</p>
                 </div> 
               </div>
               <div class="col-4 coloumn">
-                  <div class="block-text-info mx-auto animated" style="animation-delay: 0.3s;">
+                <!-- +animated -->
+                  <div class="block-text-info mx-auto" style="animation-delay: 0.3s;">
                 <p class="info-text">Оплати заказ и забери в нужное время</p>
               </div>
               </div>
@@ -98,12 +98,12 @@
     </div>
     {% include "includes/footer.html" %} 
     {% include "includes/links/scripts.html" %}
-    <p style="
+    <!-- <p style="
     background: #000;
     color: #fff; 
     text-align:center;
     margin: 0;"
     >
-    v2.1 prototype</p>
+    v2.2</p> -->
   </body>
 </html>
