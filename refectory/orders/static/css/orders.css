@@ -3,12 +3,10 @@ div.content>div.container{
 }
 
 .order{
-    margin: 5px 0;
-    border-left: 1px solid #005BAA;
-    border-right: 1px solid #005BAA;
+    margin: 5px auto;
+    box-sizing: border-box;
     background: ghostwhite;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
 }
 
 li.product-in-order{

@@ -2,6 +2,10 @@ function toggle_menu() {
     $('.categories').toggleClass('d-table');
  }
 
+function swipe_up(){
+    $("html, body").animate({ scrollTop: 0 }, "medium");
+}
+
 $('#button-categories').click(function () {
     toggle_menu()
 });
@@ -14,6 +18,7 @@ $('.category-item').click(function () {
     var attr = ($(this).attr('data-category'))
 
     toggle_menu()
+    swipe_up()
 
     if (attr=='all'){
 

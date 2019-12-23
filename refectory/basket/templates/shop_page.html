@@ -25,7 +25,7 @@
         {% include "includes/navbar.html" %} 
         {% include "includes/head.html" %} 
             <div class="container basket" id='#content'>
-                <form action="pay" method="POST" class="order_in_basket">
+                <form action="pay"  method="POST" class="order_in_basket">
                   {%csrf_token%}
                   <div class="row">
                     {% if order %}
@@ -42,7 +42,7 @@
                       </div>
                       <div class="col-12 text-center" style="margin-top: 10px;">
                           <h5>Общая стоимость : <strong class='total_price'>{{order.total_price}} ₽</strong>
-                            <button class="btn btn-success" type="submit">Оплатить</button>
+                            <button class="btn btn-success" type="submit" id="pay_button">Оплатить</button>
                           </h5>
                       </div>
                   </div>
@@ -60,5 +60,11 @@
     {%include "includes/links/scripts.html"%}
     <script src="{% static 'js/delete_product_ajax.js' %}"></script>
     <script src="{% static 'js/change_product.js' %}"></script>
+    <script>
+      $('#pay_button').click(function(){
+        $('form.order_in_basket').submit(); 
+        $(this).attr('disabled', 'True');
+      });
+    </script>
   </body>
 </html>
